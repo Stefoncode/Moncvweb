@@ -4,165 +4,254 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stéphane Liabeuf — CV</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>LIABEUF_STÉPHANE // CV.EXE</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-–ink: #0e0e10;
-–paper: #f5f2ec;
-–accent: #c8532a;
-–accent2: #e8a87c;
-–muted: #7a7269;
-–line: #d9d4cb;
-–card: #ffffff;
+–bg: #050810;
+–bg2: #080d1a;
+–cyan: #00f5ff;
+–magenta: #ff00aa;
+–yellow: #ffe600;
+–green: #00ff88;
+–dark-cyan: #003d40;
+–text: #c8d8e8;
+–muted: #4a6080;
+–grid: rgba(0,245,255,0.04);
 }
 
 html { scroll-behavior: smooth; }
 
 body {
-font-family: ‘DM Sans’, sans-serif;
-background: var(–paper);
-color: var(–ink);
-font-size: 15px;
-line-height: 1.65;
+font-family: ‘Rajdhani’, sans-serif;
+background: var(–bg);
+color: var(–text);
 overflow-x: hidden;
+cursor: crosshair;
+}
+
+/* ── SCANLINES overlay ── */
+body::before {
+content: ‘’;
+position: fixed;
+inset: 0;
+background: repeating-linear-gradient(
+0deg,
+transparent,
+transparent 2px,
+rgba(0,0,0,0.15) 2px,
+rgba(0,0,0,0.15) 4px
+);
+pointer-events: none;
+z-index: 9999;
+}
+
+/* ── GRID background ── */
+body::after {
+content: ‘’;
+position: fixed;
+inset: 0;
+background-image:
+linear-gradient(var(–grid) 1px, transparent 1px),
+linear-gradient(90deg, var(–grid) 1px, transparent 1px);
+background-size: 40px 40px;
+pointer-events: none;
+z-index: 0;
+}
+
+/* ── GLITCH TEXT ── */
+.glitch {
+position: relative;
+}
+.glitch::before, .glitch::after {
+content: attr(data-text);
+position: absolute;
+top: 0; left: 0;
+width: 100%; height: 100%;
+}
+.glitch::before {
+color: var(–magenta);
+animation: glitch1 3s infinite;
+clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+}
+.glitch::after {
+color: var(–cyan);
+animation: glitch2 3s infinite;
+clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+}
+
+@keyframes glitch1 {
+0%, 90%, 100% { transform: none; opacity: 1; }
+91% { transform: translate(-3px, 1px); opacity: 0.8; }
+93% { transform: translate(3px, -1px); opacity: 0.8; }
+95% { transform: translate(-2px, 2px); opacity: 0.8; }
+97% { transform: none; opacity: 1; }
+}
+@keyframes glitch2 {
+0%, 90%, 100% { transform: none; opacity: 1; }
+92% { transform: translate(3px, 2px); opacity: 0.8; }
+94% { transform: translate(-3px, -1px); opacity: 0.8; }
+96% { transform: translate(2px, -2px); opacity: 0.8; }
+98% { transform: none; opacity: 1; }
 }
 
 /* ── HERO ── */
 .hero {
 position: relative;
 min-height: 100vh;
-display: grid;
-grid-template-columns: 1fr 1fr;
-overflow: hidden;
-}
-
-.hero-left {
-background: var(–ink);
 display: flex;
 flex-direction: column;
 justify-content: center;
-padding: 80px 64px;
-position: relative;
+padding: 0 80px;
 z-index: 1;
+overflow: hidden;
 }
 
-.hero-left::after {
-content: ‘’;
+.hero-bg {
 position: absolute;
-right: -60px;
-top: 0; bottom: 0;
-width: 120px;
-background: var(–ink);
-clip-path: polygon(0 0, 40% 0, 100% 100%, 0 100%);
+inset: 0;
+background:
+radial-gradient(ellipse 60% 80% at 80% 50%, rgba(0,245,255,0.06) 0%, transparent 70%),
+radial-gradient(ellipse 40% 60% at 10% 80%, rgba(255,0,170,0.08) 0%, transparent 60%);
+z-index: 0;
+}
+
+.hero-corner {
+position: absolute;
+font-family: ‘Share Tech Mono’, monospace;
+font-size: 11px;
+color: var(–muted);
 z-index: 2;
 }
+.hero-corner.tl { top: 32px; left: 80px; }
+.hero-corner.tr { top: 32px; right: 80px; text-align: right; }
+.hero-corner.bl { bottom: 32px; left: 80px; }
+.hero-corner.br { bottom: 32px; right: 80px; text-align: right; }
 
-.hero-right {
-background: var(–paper);
-display: flex;
-flex-direction: column;
-justify-content: flex-end;
-padding: 80px 80px 80px 120px;
-position: relative;
-}
-
-.hero-right::before {
-content: ‘SL’;
+/* corner brackets */
+.corner-bracket {
 position: absolute;
-top: -20px;
-right: 40px;
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 280px;
-font-weight: 300;
-color: var(–line);
-line-height: 1;
-pointer-events: none;
-user-select: none;
+width: 24px; height: 24px;
+z-index: 2;
+}
+.corner-bracket.tl { top: 20px; left: 60px; border-top: 2px solid var(–cyan); border-left: 2px solid var(–cyan); }
+.corner-bracket.tr { top: 20px; right: 60px; border-top: 2px solid var(–cyan); border-right: 2px solid var(–cyan); }
+.corner-bracket.bl { bottom: 20px; left: 60px; border-bottom: 2px solid var(–cyan); border-left: 2px solid var(–cyan); }
+.corner-bracket.br { bottom: 20px; right: 60px; border-bottom: 2px solid var(–cyan); border-right: 2px solid var(–cyan); }
+
+.hero-id {
+position: relative;
+z-index: 2;
+font-family: ‘Share Tech Mono’, monospace;
+font-size: 12px;
+color: var(–cyan);
+letter-spacing: 0.3em;
+margin-bottom: 20px;
+opacity: 0;
+animation: fadeIn 0.5s ease 0.3s forwards;
 }
 
-.tag {
-display: inline-block;
-font-size: 11px;
-letter-spacing: 0.2em;
-text-transform: uppercase;
-color: var(–accent);
-border: 1px solid var(–accent);
-padding: 4px 12px;
-margin-bottom: 32px;
-opacity: 0;
-animation: fadeUp 0.6s ease 0.1s forwards;
-}
+.hero-id span { color: var(–magenta); }
 
 .hero-name {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: clamp(52px, 6vw, 84px);
-font-weight: 300;
-color: #ffffff;
-line-height: 1.05;
-opacity: 0;
-animation: fadeUp 0.7s ease 0.2s forwards;
-}
-
-.hero-name em {
-font-style: italic;
-color: var(–accent2);
-}
-
-.hero-title {
-margin-top: 24px;
-font-size: 13px;
-letter-spacing: 0.15em;
+position: relative;
+z-index: 2;
+font-family: ‘Orbitron’, monospace;
+font-size: clamp(48px, 8vw, 110px);
+font-weight: 900;
+line-height: 0.9;
+color: #fff;
 text-transform: uppercase;
-color: var(–muted);
-color: #9e9689;
+letter-spacing: -0.02em;
 opacity: 0;
-animation: fadeUp 0.7s ease 0.35s forwards;
+animation: fadeIn 0.6s ease 0.5s forwards;
 }
 
-.hero-summary {
-position: relative;
-z-index: 2;
-max-width: 420px;
-opacity: 0;
-animation: fadeUp 0.8s ease 0.5s forwards;
-}
-
-.hero-summary p {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 20px;
-font-weight: 300;
-font-style: italic;
-color: var(–ink);
-line-height: 1.7;
-}
-
-.hero-meta {
-position: relative;
-z-index: 2;
-margin-top: 40px;
-display: flex;
-gap: 40px;
-opacity: 0;
-animation: fadeUp 0.8s ease 0.65s forwards;
-}
-
-.meta-item strong {
+.hero-name .line2 {
 display: block;
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 36px;
-font-weight: 600;
-color: var(–accent);
-line-height: 1;
+color: transparent;
+-webkit-text-stroke: 1px var(–cyan);
+text-shadow: 0 0 30px rgba(0,245,255,0.4);
 }
 
-.meta-item span {
-font-size: 11px;
-letter-spacing: 0.12em;
-text-transform: uppercase;
+.hero-subtitle {
+position: relative;
+z-index: 2;
+margin-top: 24px;
+font-family: ‘Share Tech Mono’, monospace;
+font-size: 14px;
+color: var(–magenta);
+letter-spacing: 0.2em;
+opacity: 0;
+animation: fadeIn 0.6s ease 0.7s forwards;
+}
+
+.hero-subtitle::before { content: ’> ’; color: var(–green); }
+
+.hero-stats {
+position: relative;
+z-index: 2;
+display: flex;
+gap: 48px;
+margin-top: 56px;
+opacity: 0;
+animation: fadeIn 0.6s ease 0.9s forwards;
+}
+
+.stat-box {
+border: 1px solid rgba(0,245,255,0.25);
+padding: 16px 24px;
+position: relative;
+background: rgba(0,245,255,0.03);
+clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+
+.stat-box::before {
+content: ‘’;
+position: absolute;
+top: -1px; left: -1px; right: -1px; bottom: -1px;
+background: linear-gradient(135deg, var(–cyan), transparent 50%);
+clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+z-index: -1;
+opacity: 0.3;
+}
+
+.stat-num {
+font-family: ‘Orbitron’, monospace;
+font-size: 36px;
+font-weight: 700;
+color: var(–cyan);
+display: block;
+text-shadow: 0 0 20px rgba(0,245,255,0.6);
+}
+
+.stat-label {
+font-family: ‘Share Tech Mono’, monospace;
+font-size: 10px;
+letter-spacing: 0.15em;
 color: var(–muted);
+text-transform: uppercase;
+}
+
+.hero-scroll {
+position: absolute;
+bottom: 48px;
+left: 50%;
+transform: translateX(-50%);
+z-index: 2;
+font-family: ‘Share Tech Mono’, monospace;
+font-size: 10px;
+letter-spacing: 0.2em;
+color: var(–muted);
+text-align: center;
+animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+0%, 100% { opacity: 0.4; }
+50% { opacity: 1; }
 }
 
 /* ── NAV ── */
@@ -170,136 +259,164 @@ nav {
 position: sticky;
 top: 0;
 z-index: 100;
-background: rgba(14,14,16,0.95);
-backdrop-filter: blur(12px);
+background: rgba(5,8,16,0.92);
+backdrop-filter: blur(16px);
+border-bottom: 1px solid rgba(0,245,255,0.15);
 display: flex;
-justify-content: center;
+align-items: center;
+padding: 0 48px;
 gap: 0;
-border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.nav-logo {
+font-family: ‘Orbitron’, monospace;
+font-size: 12px;
+font-weight: 700;
+color: var(–cyan);
+letter-spacing: 0.2em;
+margin-right: auto;
+text-shadow: 0 0 10px rgba(0,245,255,0.5);
 }
 
 nav a {
+font-family: ‘Share Tech Mono’, monospace;
 font-size: 11px;
-letter-spacing: 0.18em;
+letter-spacing: 0.2em;
 text-transform: uppercase;
-color: #9e9689;
+color: var(–muted);
 text-decoration: none;
-padding: 16px 28px;
-transition: color 0.25s;
+padding: 18px 24px;
+transition: color 0.2s;
 position: relative;
 }
 
-nav a::after {
-content: ‘’;
-position: absolute;
-bottom: 0; left: 28px; right: 28px;
-height: 2px;
-background: var(–accent);
-transform: scaleX(0);
-transition: transform 0.25s;
+nav a::before {
+content: ‘//’;
+color: var(–magenta);
+margin-right: 6px;
+opacity: 0;
+transition: opacity 0.2s;
 }
 
-nav a:hover { color: #fff; }
-nav a:hover::after { transform: scaleX(1); }
+nav a:hover { color: var(–cyan); }
+nav a:hover::before { opacity: 1; }
 
 /* ── SECTIONS ── */
 section {
-padding: 100px 0;
+position: relative;
+z-index: 1;
+padding: 100px 80px;
 opacity: 0;
-transform: translateY(30px);
-transition: opacity 0.7s ease, transform 0.7s ease;
+transform: translateY(20px);
+transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 section.visible { opacity: 1; transform: none; }
 
-.container {
-max-width: 1100px;
-margin: 0 auto;
-padding: 0 48px;
+.section-header {
+margin-bottom: 64px;
 }
 
-.section-label {
+.section-id {
+font-family: ‘Share Tech Mono’, monospace;
 font-size: 11px;
-letter-spacing: 0.25em;
-text-transform: uppercase;
-color: var(–accent);
-margin-bottom: 8px;
+color: var(–magenta);
+letter-spacing: 0.3em;
+margin-bottom: 12px;
 }
 
 .section-title {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: clamp(36px, 4vw, 52px);
-font-weight: 300;
-line-height: 1.1;
-margin-bottom: 56px;
+font-family: ‘Orbitron’, monospace;
+font-size: clamp(28px, 4vw, 48px);
+font-weight: 700;
+color: #fff;
+text-transform: uppercase;
+letter-spacing: 0.05em;
 position: relative;
-padding-bottom: 24px;
+display: inline-block;
 }
 
 .section-title::after {
 content: ‘’;
-position: absolute;
-bottom: 0; left: 0;
-width: 48px; height: 2px;
-background: var(–accent);
+display: block;
+margin-top: 12px;
+height: 2px;
+background: linear-gradient(90deg, var(–cyan), var(–magenta), transparent);
 }
 
 /* ── EXPERIENCE ── */
-#experience { background: var(–paper); }
+#experience { background: var(–bg); }
 
-.exp-grid {
-display: grid;
-gap: 2px;
-}
+.exp-list { display: grid; gap: 2px; }
 
 .exp-item {
 display: grid;
-grid-template-columns: 200px 1fr;
+grid-template-columns: 220px 1fr;
+border-top: 1px solid rgba(0,245,255,0.1);
+padding: 36px 0;
 gap: 0;
-border-top: 1px solid var(–line);
-padding: 32px 0;
-transition: background 0.25s;
+transition: background 0.2s;
+position: relative;
 }
 
-.exp-item:last-child { border-bottom: 1px solid var(–line); }
+.exp-item:last-child { border-bottom: 1px solid rgba(0,245,255,0.1); }
 
-.exp-date {
-font-size: 12px;
-letter-spacing: 0.1em;
-color: var(–muted);
-padding-top: 4px;
+.exp-item::before {
+content: ‘’;
+position: absolute;
+left: -80px; right: -80px; top: 0; bottom: 0;
+background: rgba(0,245,255,0.02);
+opacity: 0;
+transition: opacity 0.25s;
+}
+
+.exp-item:hover::before { opacity: 1; }
+
+.exp-left {
 padding-right: 32px;
+padding-top: 4px;
 }
 
-.exp-company {
+.exp-period {
+font-family: ‘Share Tech Mono’, monospace;
 font-size: 11px;
+color: var(–cyan);
+letter-spacing: 0.1em;
+margin-bottom: 8px;
+}
+
+.exp-co {
+font-family: ‘Share Tech Mono’, monospace;
+font-size: 10px;
+color: var(–muted);
 letter-spacing: 0.12em;
 text-transform: uppercase;
-color: var(–accent);
-margin-bottom: 4px;
 }
 
 .exp-role {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 24px;
-font-weight: 400;
-margin-bottom: 12px;
-line-height: 1.2;
-}
-
-.exp-sub {
-font-size: 12px;
-letter-spacing: 0.08em;
+font-family: ‘Orbitron’, monospace;
+font-size: 16px;
+font-weight: 700;
+color: #fff;
+margin-bottom: 6px;
 text-transform: uppercase;
-color: var(–muted);
+letter-spacing: 0.05em;
+line-height: 1.3;
+}
+
+.exp-program {
+font-family: ‘Share Tech Mono’, monospace;
+font-size: 11px;
+color: var(–magenta);
+letter-spacing: 0.1em;
 margin-bottom: 12px;
 }
 
-.exp-body {
+.exp-desc {
 font-size: 14px;
-color: #4a4640;
+color: #7a9ab8;
 line-height: 1.7;
-max-width: 620px;
+max-width: 600px;
 }
 
 .exp-tags {
@@ -310,229 +427,357 @@ margin-top: 16px;
 }
 
 .exp-tag {
-font-size: 11px;
+font-family: ‘Share Tech Mono’, monospace;
+font-size: 10px;
 letter-spacing: 0.08em;
+color: var(–cyan);
+border: 1px solid rgba(0,245,255,0.3);
+padding: 3px 10px;
 text-transform: uppercase;
-background: #f0ede7;
-color: #7a7269;
-padding: 4px 10px;
-border-radius: 2px;
+clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+background: rgba(0,245,255,0.05);
 }
 
 /* ── SKILLS ── */
-#competences { background: var(–ink); color: #fff; }
-#competences .section-title { color: #fff; }
+#competences { background: var(–bg2); }
 
 .skills-grid {
 display: grid;
-grid-template-columns: 1fr 1fr 1fr;
+grid-template-columns: repeat(3, 1fr);
 gap: 32px;
 }
 
-.skill-group h3 {
+.skill-panel {
+border: 1px solid rgba(0,245,255,0.12);
+padding: 28px;
+background: rgba(0,245,255,0.02);
+position: relative;
+clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+}
+
+.skill-panel::before {
+content: ‘’;
+position: absolute;
+top: 0; right: 0;
+width: 0; height: 0;
+border-top: 16px solid rgba(0,245,255,0.3);
+border-left: 16px solid transparent;
+}
+
+.skill-panel-title {
+font-family: ‘Orbitron’, monospace;
 font-size: 11px;
+font-weight: 700;
+color: var(–magenta);
 letter-spacing: 0.2em;
 text-transform: uppercase;
-color: var(–accent2);
 margin-bottom: 24px;
 padding-bottom: 12px;
-border-bottom: 1px solid rgba(255,255,255,0.1);
+border-bottom: 1px solid rgba(255,0,170,0.2);
 }
 
 .skill-row {
-margin-bottom: 16px;
+margin-bottom: 18px;
+}
+
+.skill-info {
+display: flex;
+justify-content: space-between;
+margin-bottom: 6px;
 }
 
 .skill-name {
-display: flex;
-justify-content: space-between;
+font-family: ‘Rajdhani’, sans-serif;
 font-size: 13px;
-margin-bottom: 6px;
-color: #ccc9c2;
+font-weight: 600;
+color: var(–text);
+letter-spacing: 0.05em;
 }
 
-.skill-years {
-font-size: 11px;
+.skill-meta {
+font-family: ‘Share Tech Mono’, monospace;
+font-size: 10px;
 color: var(–muted);
 }
 
 .skill-bar {
-height: 2px;
-background: rgba(255,255,255,0.1);
-border-radius: 1px;
-overflow: hidden;
+height: 3px;
+background: rgba(255,255,255,0.06);
+position: relative;
+overflow: visible;
 }
 
 .skill-fill {
 height: 100%;
-background: linear-gradient(90deg, var(–accent), var(–accent2));
-border-radius: 1px;
 width: 0;
-transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+background: linear-gradient(90deg, var(–cyan), var(–green));
+box-shadow: 0 0 8px var(–cyan);
+transition: width 1.4s cubic-bezier(0.4,0,0.2,1);
+position: relative;
+}
+
+.skill-fill::after {
+content: ‘’;
+position: absolute;
+right: -1px; top: -3px;
+width: 2px; height: 9px;
+background: #fff;
+box-shadow: 0 0 6px var(–cyan);
 }
 
 /* ── SECTORS ── */
-#secteurs { background: #f9f6f0; }
+#secteurs { background: var(–bg); }
 
-.sectors-wrap {
-display: flex;
-flex-wrap: wrap;
-gap: 12px;
+.sectors-grid {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 2px;
 }
 
-.sector-pill {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 18px;
-font-weight: 300;
-font-style: italic;
-padding: 10px 24px;
-border: 1px solid var(–line);
-border-radius: 40px;
-color: var(–ink);
-transition: all 0.25s;
+.sector-cell {
+border: 1px solid rgba(0,245,255,0.08);
+padding: 20px 24px;
+font-family: ‘Rajdhani’, sans-serif;
+font-size: 15px;
+font-weight: 600;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+color: var(–muted);
+transition: all 0.2s;
 cursor: default;
+position: relative;
+overflow: hidden;
 }
 
-.sector-pill:hover {
-background: var(–accent);
-border-color: var(–accent);
-color: white;
-transform: translateY(-2px);
+.sector-cell::before {
+content: ‘◈’;
+margin-right: 10px;
+color: var(–magenta);
+font-size: 10px;
 }
+
+.sector-cell::after {
+content: ‘’;
+position: absolute;
+inset: 0;
+background: linear-gradient(135deg, rgba(0,245,255,0.07), transparent);
+opacity: 0;
+transition: opacity 0.25s;
+}
+
+.sector-cell:hover {
+color: var(–cyan);
+border-color: rgba(0,245,255,0.4);
+}
+
+.sector-cell:hover::after { opacity: 1; }
 
 /* ── FORMATION ── */
-#formation { background: var(–paper); }
+#formation { background: var(–bg2); }
 
 .edu-grid {
 display: grid;
 grid-template-columns: 1fr 1fr;
 gap: 24px;
+margin-bottom: 48px;
 }
 
 .edu-card {
-background: var(–card);
-padding: 36px;
-border-left: 3px solid var(–accent);
-box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+border: 1px solid rgba(0,245,255,0.15);
+padding: 32px;
+background: rgba(0,245,255,0.03);
+position: relative;
+clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+}
+
+.edu-card::before {
+content: ‘’;
+position: absolute;
+top: 0; right: 0;
+width: 0; height: 0;
+border-top: 20px solid rgba(0,245,255,0.4);
+border-left: 20px solid transparent;
 }
 
 .edu-year {
+font-family: ‘Share Tech Mono’, monospace;
 font-size: 11px;
-letter-spacing: 0.18em;
-text-transform: uppercase;
-color: var(–muted);
+color: var(–magenta);
+letter-spacing: 0.2em;
 margin-bottom: 12px;
 }
 
 .edu-degree {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 22px;
-font-weight: 400;
+font-family: ‘Orbitron’, monospace;
+font-size: 17px;
+font-weight: 700;
+color: #fff;
 margin-bottom: 8px;
+text-transform: uppercase;
 }
 
 .edu-school {
-font-size: 13px;
+font-family: ‘Share Tech Mono’, monospace;
+font-size: 12px;
 color: var(–muted);
 }
 
-/* ── CERTIFICATIONS ── */
+.certs-title {
+font-family: ‘Orbitron’, monospace;
+font-size: 12px;
+color: var(–cyan);
+letter-spacing: 0.2em;
+margin-bottom: 20px;
+text-transform: uppercase;
+}
+
 .certs-grid {
 display: flex;
 flex-wrap: wrap;
-gap: 12px;
-margin-top: 48px;
+gap: 10px;
 }
 
 .cert-chip {
-background: var(–ink);
-color: #ccc9c2;
-font-size: 12px;
-letter-spacing: 0.06em;
-padding: 8px 18px;
-border-radius: 2px;
+font-family: ‘Share Tech Mono’, monospace;
+font-size: 11px;
+letter-spacing: 0.1em;
+color: var(–green);
+border: 1px solid rgba(0,255,136,0.25);
+padding: 6px 14px;
+background: rgba(0,255,136,0.04);
+text-transform: uppercase;
 }
 
 /* ── FOOTER ── */
 footer {
-background: var(–ink);
-color: #9e9689;
-text-align: center;
-padding: 40px;
-font-size: 12px;
+position: relative;
+z-index: 1;
+background: var(–bg);
+border-top: 1px solid rgba(0,245,255,0.15);
+padding: 48px 80px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.footer-name {
+font-family: ‘Orbitron’, monospace;
+font-size: 20px;
+font-weight: 900;
+color: var(–cyan);
+text-shadow: 0 0 20px rgba(0,245,255,0.5);
 letter-spacing: 0.1em;
 }
 
-footer strong {
-color: var(–accent2);
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 18px;
-font-weight: 300;
-display: block;
-margin-bottom: 8px;
+.footer-info {
+font-family: ‘Share Tech Mono’, monospace;
+font-size: 11px;
+color: var(–muted);
+text-align: right;
+line-height: 1.8;
 }
 
-/* ── ANIMATIONS ── */
-@keyframes fadeUp {
-from { opacity: 0; transform: translateY(20px); }
+/* ── NEON CURSOR dot ── */
+.cursor-dot {
+position: fixed;
+width: 8px; height: 8px;
+background: var(–cyan);
+border-radius: 50%;
+pointer-events: none;
+z-index: 10000;
+transform: translate(-50%, -50%);
+box-shadow: 0 0 10px var(–cyan), 0 0 20px rgba(0,245,255,0.5);
+transition: transform 0.05s;
+}
+
+/* ── FLICKER ── */
+@keyframes flicker {
+0%, 96%, 100% { opacity: 1; }
+97% { opacity: 0.7; }
+98% { opacity: 1; }
+99% { opacity: 0.6; }
+}
+
+.hero { animation: flicker 8s infinite; }
+
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(12px); }
 to { opacity: 1; transform: none; }
 }
 
 /* ── RESPONSIVE ── */
-@media (max-width: 768px) {
-.hero { grid-template-columns: 1fr; min-height: auto; }
-.hero-left { padding: 60px 32px; }
-.hero-left::after { display: none; }
-.hero-right { padding: 48px 32px; }
-.hero-right::before { display: none; }
-.hero-meta { flex-wrap: wrap; gap: 24px; }
+@media (max-width: 900px) {
+section, .hero, footer { padding-left: 24px; padding-right: 24px; }
+.hero-stats { flex-wrap: wrap; gap: 16px; }
 .exp-item { grid-template-columns: 1fr; }
-.exp-date { margin-bottom: 8px; }
+.exp-left { margin-bottom: 12px; }
 .skills-grid { grid-template-columns: 1fr; }
+.sectors-grid { grid-template-columns: 1fr 1fr; }
 .edu-grid { grid-template-columns: 1fr; }
-.container { padding: 0 24px; }
-nav { flex-wrap: wrap; gap: 0; }
-nav a { padding: 12px 16px; }
+.hero-corner.tr, .hero-corner.br { display: none; }
+nav { padding: 0 16px; }
+.nav-logo { font-size: 10px; }
+nav a { padding: 14px 12px; font-size: 10px; }
 }
 </style>
 
 </head>
 <body>
 
+<div class="cursor-dot" id="cursorDot"></div>
+
 <!-- HERO -->
 
 <header class="hero">
-  <div class="hero-left">
-    <span class="tag">Directeur Conseil · CGI</span>
-    <h1 class="hero-name">Stéphane<br><em>Liabeuf</em></h1>
-    <p class="hero-title">UX &amp; Digital Manager · Expert Digital &amp; E-Commerce</p>
-  </div>
-  <div class="hero-right">
-    <div class="hero-summary">
-      <p>Plus de 20 ans d'expérience dans le digital, le e-commerce et l'IT — gérer des projets innovants et ambitieux avec créativité et ténacité.</p>
+  <div class="hero-bg"></div>
+
+  <div class="corner-bracket tl"></div>
+  <div class="corner-bracket tr"></div>
+  <div class="corner-bracket bl"></div>
+  <div class="corner-bracket br"></div>
+
+  <div class="hero-corner tl">SYS://CV_LIABEUF_V2.EXE<br>STATUS: <span style="color:var(--green)">ONLINE</span></div>
+  <div class="hero-corner tr">CGI GROUP // CLERMONT-FERRAND<br>CLEARANCE: <span style="color:var(--magenta)">LEVEL_4</span></div>
+  <div class="hero-corner bl">// 20+ ANS D'EXPÉRIENCE DIGITALE</div>
+  <div class="hero-corner br">ENISE_1999 // INGÉNIEUR</div>
+
+  <p class="hero-id">ID: <span>#SL-2024</span> // MODULE: <span>DIGITAL_DIRECTOR</span> // NODE: <span>CGI.FR</span></p>
+
+  <h1 class="hero-name glitch" data-text="LIABEUF">
+    LIABEUF<br>
+    <span class="line2">STÉPHANE</span>
+  </h1>
+
+  <p class="hero-subtitle">UX &amp; DIGITAL MANAGER // DIRECTEUR CONSEIL // E-COMMERCE ARCHITECT</p>
+
+  <div class="hero-stats">
+    <div class="stat-box">
+      <strong class="stat-num">20+</strong>
+      <span class="stat-label">ANS XP</span>
     </div>
-    <div class="hero-meta">
-      <div class="meta-item">
-        <strong>20+</strong>
-        <span>Ans d'expérience</span>
-      </div>
-      <div class="meta-item">
-        <strong>40</strong>
-        <span>Squads pilotées</span>
-      </div>
-      <div class="meta-item">
-        <strong>39</strong>
-        <span>Pays couverts</span>
-      </div>
+    <div class="stat-box">
+      <strong class="stat-num">40</strong>
+      <span class="stat-label">SQUADS</span>
+    </div>
+    <div class="stat-box">
+      <strong class="stat-num">39</strong>
+      <span class="stat-label">PAYS</span>
+    </div>
+    <div class="stat-box">
+      <strong class="stat-num">25</strong>
+      <span class="stat-label">LANGUES</span>
     </div>
   </div>
+
+  <div class="hero-scroll">[ SCROLL_DOWN ] ↓</div>
 </header>
 
 <!-- NAV -->
 
 <nav>
+  <span class="nav-logo">SL://CV</span>
   <a href="#experience">Parcours</a>
-  <a href="#competences">Compétences</a>
+  <a href="#competences">Skills</a>
   <a href="#secteurs">Secteurs</a>
   <a href="#formation">Formation</a>
 </nav>
@@ -540,142 +785,148 @@ nav a { padding: 12px 16px; }
 <!-- EXPERIENCE -->
 
 <section id="experience">
-  <div class="container">
-    <p class="section-label">Parcours professionnel</p>
-    <h2 class="section-title">Expériences</h2>
+  <div class="section-header">
+    <p class="section-id">// MODULE_01 :: EXPERIENCE.LOG</p>
+    <h2 class="section-title">Parcours</h2>
+  </div>
+
+  <div class="exp-list">
 
 ```
-<div class="exp-grid">
-
-  <div class="exp-item">
-    <div class="exp-date">2021 → Aujourd'hui</div>
-    <div>
-      <p class="exp-company">CGI</p>
-      <h3 class="exp-role">Directeur Conseil<br>UX &amp; Digital Manager</h3>
-      <p class="exp-body">Développement de l'offre UX/UI sur le marché de Clermont-Ferrand. Accompagnement du déploiement UX/UI au sein des business units Michelin, mise en œuvre de KPIs spécifiques pour évaluer la progression et améliorer l'expérience utilisateur.</p>
-      <div class="exp-tags">
-        <span class="exp-tag">UX/UI</span>
-        <span class="exp-tag">KPIs</span>
-        <span class="exp-tag">Michelin</span>
-        <span class="exp-tag">Business development</span>
-      </div>
+<div class="exp-item">
+  <div class="exp-left">
+    <p class="exp-period">2021 → NOW</p>
+    <p class="exp-co">CGI · Clermont-Ferrand</p>
+  </div>
+  <div>
+    <h3 class="exp-role">Directeur Conseil<br>UX &amp; Digital Manager</h3>
+    <p class="exp-desc">Développement de l'offre UX/UI sur le marché de Clermont-Ferrand. Accompagnement du déploiement UX/UI au sein des business units Michelin, mise en œuvre de KPIs pour évaluer la progression et améliorer l'expérience utilisateur final.</p>
+    <div class="exp-tags">
+      <span class="exp-tag">UX/UI</span>
+      <span class="exp-tag">KPIs</span>
+      <span class="exp-tag">Michelin</span>
+      <span class="exp-tag">Business dev</span>
     </div>
   </div>
+</div>
 
-  <div class="exp-item">
-    <div class="exp-date">2019 → 2021</div>
-    <div>
-      <p class="exp-company">CGI · Michelin</p>
-      <h3 class="exp-role">Delivery Manager</h3>
-      <p class="exp-sub">Programme Engage — Salesforce</p>
-      <p class="exp-body">Garantir l'intégration complète des outils et services Michelin dans la plateforme Salesforce. Maîtrise de la planification dans un environnement complexe de ~40 squads réparties sur 3 pays (USA, France, Maroc) en mode agile distribué.</p>
-      <div class="exp-tags">
-        <span class="exp-tag">Salesforce</span>
-        <span class="exp-tag">Agile distribué</span>
-        <span class="exp-tag">40 squads</span>
-      </div>
+<div class="exp-item">
+  <div class="exp-left">
+    <p class="exp-period">2019 → 2021</p>
+    <p class="exp-co">CGI · Michelin</p>
+  </div>
+  <div>
+    <h3 class="exp-role">Delivery Manager</h3>
+    <p class="exp-program">// PROGRAMME ENGAGE — SALESFORCE</p>
+    <p class="exp-desc">Intégration complète des outils et services Michelin dans Salesforce. Pilotage de la planification dans un environnement complexe : ~40 squads sur 3 pays (USA, France, Maroc) en mode agile distribué.</p>
+    <div class="exp-tags">
+      <span class="exp-tag">Salesforce</span>
+      <span class="exp-tag">Agile distrib.</span>
+      <span class="exp-tag">~40 squads</span>
+      <span class="exp-tag">3 pays</span>
     </div>
   </div>
+</div>
 
-  <div class="exp-item">
-    <div class="exp-date">2017 → 2019</div>
-    <div>
-      <p class="exp-company">CGI · Michelin</p>
-      <h3 class="exp-role">Directeur Projet</h3>
-      <p class="exp-sub">Projet BI Europe — Programme Engage</p>
-      <p class="exp-body">Développement d'un outil BI Europe pour les 2 000 commerciaux Michelin dans 39 pays et 25 langues. Pilotage des ventes et commandes jusqu'au niveau SKU, intégré dans la CRM Salesforce dans le cadre du programme de transformation customer-centric.</p>
-      <div class="exp-tags">
-        <span class="exp-tag">Business Intelligence</span>
-        <span class="exp-tag">2000 utilisateurs</span>
-        <span class="exp-tag">39 pays</span>
-        <span class="exp-tag">Salesforce</span>
-      </div>
+<div class="exp-item">
+  <div class="exp-left">
+    <p class="exp-period">2017 → 2019</p>
+    <p class="exp-co">CGI · Michelin</p>
+  </div>
+  <div>
+    <h3 class="exp-role">Directeur Projet<br>BI Europe</h3>
+    <p class="exp-program">// PROGRAMME ENGAGE — SALESFORCE</p>
+    <p class="exp-desc">Outil BI Europe pour 2 000 commerciaux Michelin dans 39 pays et 25 langues. Pilotage des ventes et commandes jusqu'au SKU, intégré dans Salesforce CRM dans le cadre du programme de transformation customer-centric.</p>
+    <div class="exp-tags">
+      <span class="exp-tag">BI</span>
+      <span class="exp-tag">2000 users</span>
+      <span class="exp-tag">39 pays</span>
+      <span class="exp-tag">25 langues</span>
+      <span class="exp-tag">Salesforce</span>
     </div>
   </div>
+</div>
 
-  <div class="exp-item">
-    <div class="exp-date">2016 → 2017</div>
-    <div>
-      <p class="exp-company">Le Temps des Travaux</p>
-      <h3 class="exp-role">Directeur Associé E-Commerce &amp; CTO</h3>
-      <p class="exp-body">Élaboration du SI, stratégie de marque et refonte complète du site E-Commerce (CA de 450 k€ dès la 1ère année). Définition et déploiement de la stratégie webmarketing de conquête et fidélisation. Gestion hébergement et sécurité serveur dédié.</p>
-      <div class="exp-tags">
-        <span class="exp-tag">E-Commerce</span>
-        <span class="exp-tag">CTO</span>
-        <span class="exp-tag">Webmarketing</span>
-        <span class="exp-tag">450 k€ CA</span>
-      </div>
+<div class="exp-item">
+  <div class="exp-left">
+    <p class="exp-period">2016 → 2017</p>
+    <p class="exp-co">Le Temps des Travaux</p>
+  </div>
+  <div>
+    <h3 class="exp-role">Dir. Associé E-Commerce &amp; CTO</h3>
+    <p class="exp-desc">Élaboration du SI, stratégie de marque, refonte complète du site E-Commerce. CA de 450 k€ dès la 1ère année. Stratégie webmarketing, hébergement et sécurité serveur dédié.</p>
+    <div class="exp-tags">
+      <span class="exp-tag">E-Commerce</span>
+      <span class="exp-tag">CTO</span>
+      <span class="exp-tag">450 k€ CA</span>
+      <span class="exp-tag">Webmarketing</span>
     </div>
   </div>
+</div>
 
-  <div class="exp-item">
-    <div class="exp-date">2013 → 2016</div>
-    <div>
-      <p class="exp-company">Trismégiste International</p>
-      <h3 class="exp-role">Directeur E-Commerce</h3>
-      <p class="exp-sub">vetality.fr</p>
-      <p class="exp-body">Création du pôle E-Commerce de zéro : positionnement de marque, recrutement, SI, logistique. CA de 900 k€ dès la 1ère année (objectif 1 M€), rentabilité atteinte au 15e mois (objectif 24 mois).</p>
-      <div class="exp-tags">
-        <span class="exp-tag">Création ex-nihilo</span>
-        <span class="exp-tag">900 k€ CA</span>
-        <span class="exp-tag">Retail</span>
-        <span class="exp-tag">Logistique</span>
-      </div>
+<div class="exp-item">
+  <div class="exp-left">
+    <p class="exp-period">2013 → 2016</p>
+    <p class="exp-co">Trismégiste Intl · vetality.fr</p>
+  </div>
+  <div>
+    <h3 class="exp-role">Directeur E-Commerce</h3>
+    <p class="exp-desc">Création du pôle E-Commerce de zéro : marque, recrutement, SI, logistique. CA de 900 k€ dès la 1ère année (obj. 1 M€). Rentabilité atteinte au 15e mois (obj. 24 mois).</p>
+    <div class="exp-tags">
+      <span class="exp-tag">Création ex-nihilo</span>
+      <span class="exp-tag">900 k€</span>
+      <span class="exp-tag">Retail</span>
     </div>
   </div>
+</div>
 
-  <div class="exp-item">
-    <div class="exp-date">2010 → 2013</div>
-    <div>
-      <p class="exp-company">Indépendant</p>
-      <h3 class="exp-role">Consultant Digital &amp; UX Designer</h3>
-      <p class="exp-body">Conseil en stratégie digitale, audit &amp; préconisation, webmarketing, social media acquisition, conception digitale et développement.</p>
-      <div class="exp-tags">
-        <span class="exp-tag">Conseil</span>
-        <span class="exp-tag">UX Design</span>
-        <span class="exp-tag">Social Media</span>
-      </div>
+<div class="exp-item">
+  <div class="exp-left">
+    <p class="exp-period">2010 → 2013</p>
+    <p class="exp-co">Indépendant</p>
+  </div>
+  <div>
+    <h3 class="exp-role">Consultant Digital &amp; UX Designer</h3>
+    <p class="exp-desc">Conseil en stratégie digitale, audit &amp; préconisation, webmarketing, social media acquisition, conception digitale et développement.</p>
+    <div class="exp-tags">
+      <span class="exp-tag">Conseil</span>
+      <span class="exp-tag">UX Design</span>
+      <span class="exp-tag">Social Media</span>
     </div>
   </div>
+</div>
 
-  <div class="exp-item">
-    <div class="exp-date">2005 → 2010</div>
-    <div>
-      <p class="exp-company">Sescoi International (Hexagon)</p>
-      <h3 class="exp-role">Resp. Produit ERP · Innovation &amp; Industrialisation</h3>
-      <p class="exp-body">Responsable produit ERP et pilotage de l'innovation et de l'industrialisation au sein d'un éditeur logiciel international.</p>
-      <div class="exp-tags">
-        <span class="exp-tag">ERP</span>
-        <span class="exp-tag">Product Management</span>
-      </div>
-    </div>
+<div class="exp-item">
+  <div class="exp-left">
+    <p class="exp-period">2005 → 2010</p>
+    <p class="exp-co">Sescoi International (Hexagon)</p>
   </div>
-
-  <div class="exp-item">
-    <div class="exp-date">2001 → 2005</div>
-    <div>
-      <p class="exp-company">Sescoi International (Hexagon)</p>
-      <h3 class="exp-role">Resp. Développement Scheduling &amp; Business Analyste ERP Europe</h3>
-      <div class="exp-tags">
-        <span class="exp-tag">ERP</span>
-        <span class="exp-tag">Business Analysis</span>
-        <span class="exp-tag">Europe</span>
-      </div>
-    </div>
+  <div>
+    <h3 class="exp-role">Resp. Produit ERP<br>Innovation &amp; Industrialisation</h3>
+    <div class="exp-tags"><span class="exp-tag">ERP</span><span class="exp-tag">Product Mgmt</span></div>
   </div>
+</div>
 
-  <div class="exp-item">
-    <div class="exp-date">1999 → 2001</div>
-    <div>
-      <p class="exp-company">Moul'Anjou Plastique</p>
-      <h3 class="exp-role">Responsable Projet ERP · Injection Plastique</h3>
-      <div class="exp-tags">
-        <span class="exp-tag">ERP</span>
-        <span class="exp-tag">Plasturgie</span>
-      </div>
-    </div>
+<div class="exp-item">
+  <div class="exp-left">
+    <p class="exp-period">2001 → 2005</p>
+    <p class="exp-co">Sescoi International (Hexagon)</p>
   </div>
+  <div>
+    <h3 class="exp-role">Resp. Dev Scheduling &amp; BA ERP Europe</h3>
+    <div class="exp-tags"><span class="exp-tag">ERP</span><span class="exp-tag">Business Analysis</span><span class="exp-tag">Europe</span></div>
+  </div>
+</div>
 
+<div class="exp-item">
+  <div class="exp-left">
+    <p class="exp-period">1999 → 2001</p>
+    <p class="exp-co">Moul'Anjou Plastique</p>
+  </div>
+  <div>
+    <h3 class="exp-role">Resp. Projet ERP · Injection Plastique</h3>
+    <div class="exp-tags"><span class="exp-tag">ERP</span><span class="exp-tag">Plasturgie</span></div>
+  </div>
 </div>
 ```
 
@@ -685,82 +936,82 @@ nav a { padding: 12px 16px; }
 <!-- COMPETENCES -->
 
 <section id="competences">
-  <div class="container">
-    <p class="section-label" style="color: var(--accent2)">Savoir-faire</p>
+  <div class="section-header">
+    <p class="section-id">// MODULE_02 :: SKILLS.DAT</p>
     <h2 class="section-title">Compétences</h2>
+  </div>
+
+  <div class="skills-grid">
+    <div class="skill-panel">
+      <p class="skill-panel-title">// Techniques</p>
+      <div class="skill-row" data-level="100">
+        <div class="skill-info"><span class="skill-name">Gestion de projet</span><span class="skill-meta">19A · EXPERT</span></div>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-row" data-level="75">
+        <div class="skill-info"><span class="skill-name">Méthodologies Agiles</span><span class="skill-meta">15A · ★★★</span></div>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-row" data-level="100">
+        <div class="skill-info"><span class="skill-name">Scheduling</span><span class="skill-meta">5A · EXPERT</span></div>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-row" data-level="75">
+        <div class="skill-info"><span class="skill-name">UX / UI</span><span class="skill-meta">15A · ★★★</span></div>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-row" data-level="100">
+        <div class="skill-info"><span class="skill-name">CMS E-Commerce</span><span class="skill-meta">6A · EXPERT</span></div>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-row" data-level="50">
+        <div class="skill-info"><span class="skill-name">Dev HTML/CSS/PHP/JS</span><span class="skill-meta">8A · ★★</span></div>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+      </div>
+    </div>
 
 ```
-<div class="skills-grid">
-  <div class="skill-group">
-    <h3>Compétences techniques</h3>
-    <div class="skill-row" data-level="100" data-years="19 ans">
-      <div class="skill-name"><span>Gestion de projet</span><span class="skill-years">19 ans · Expert</span></div>
-      <div class="skill-bar"><div class="skill-fill"></div></div>
-    </div>
-    <div class="skill-row" data-level="75" data-years="15 ans">
-      <div class="skill-name"><span>Méthodologies Agiles</span><span class="skill-years">15 ans · Très élevé</span></div>
-      <div class="skill-bar"><div class="skill-fill"></div></div>
-    </div>
-    <div class="skill-row" data-level="100" data-years="5 ans">
-      <div class="skill-name"><span>Scheduling</span><span class="skill-years">5 ans · Expert</span></div>
-      <div class="skill-bar"><div class="skill-fill"></div></div>
-    </div>
-    <div class="skill-row" data-level="75" data-years="15 ans">
-      <div class="skill-name"><span>UX / UI</span><span class="skill-years">15 ans · Très élevé</span></div>
-      <div class="skill-bar"><div class="skill-fill"></div></div>
-    </div>
-    <div class="skill-row" data-level="100" data-years="6 ans">
-      <div class="skill-name"><span>CMS E-Commerce</span><span class="skill-years">6 ans · Expert</span></div>
-      <div class="skill-bar"><div class="skill-fill"></div></div>
-    </div>
-    <div class="skill-row" data-level="50" data-years="8 ans">
-      <div class="skill-name"><span>Dev. Html/CSS/PHP/JS</span><span class="skill-years">8 ans · Élevé</span></div>
-      <div class="skill-bar"><div class="skill-fill"></div></div>
-    </div>
+<div class="skill-panel">
+  <p class="skill-panel-title">// Technologies IT</p>
+  <div class="skill-row" data-level="75">
+    <div class="skill-info"><span class="skill-name">ERP</span><span class="skill-meta">10A · ★★★</span></div>
+    <div class="skill-bar"><div class="skill-fill"></div></div>
   </div>
-
-  <div class="skill-group">
-    <h3>Technologies de l'information</h3>
-    <div class="skill-row" data-level="75" data-years="10 ans">
-      <div class="skill-name"><span>ERP</span><span class="skill-years">10 ans · Très élevé</span></div>
-      <div class="skill-bar"><div class="skill-fill"></div></div>
-    </div>
-    <div class="skill-row" data-level="100" data-years="4 ans">
-      <div class="skill-name"><span>E-Commerce</span><span class="skill-years">4 ans · Expert</span></div>
-      <div class="skill-bar"><div class="skill-fill"></div></div>
-    </div>
-    <div class="skill-row" data-level="100" data-years="6 ans">
-      <div class="skill-name"><span>Marketing Digital</span><span class="skill-years">6 ans · Expert</span></div>
-      <div class="skill-bar"><div class="skill-fill"></div></div>
-    </div>
-    <div class="skill-row" data-level="50" data-years="2 ans">
-      <div class="skill-name"><span>Business Intelligence</span><span class="skill-years">2 ans · Élevé</span></div>
-      <div class="skill-bar"><div class="skill-fill"></div></div>
-    </div>
+  <div class="skill-row" data-level="100">
+    <div class="skill-info"><span class="skill-name">E-Commerce</span><span class="skill-meta">4A · EXPERT</span></div>
+    <div class="skill-bar"><div class="skill-fill"></div></div>
   </div>
+  <div class="skill-row" data-level="100">
+    <div class="skill-info"><span class="skill-name">Marketing Digital</span><span class="skill-meta">6A · EXPERT</span></div>
+    <div class="skill-bar"><div class="skill-fill"></div></div>
+  </div>
+  <div class="skill-row" data-level="50">
+    <div class="skill-info"><span class="skill-name">Business Intelligence</span><span class="skill-meta">2A · ★★</span></div>
+    <div class="skill-bar"><div class="skill-fill"></div></div>
+  </div>
+</div>
 
-  <div class="skill-group">
-    <h3>Management &amp; stratégie</h3>
-    <div class="skill-row" data-level="100" data-years="19 ans">
-      <div class="skill-name"><span>Pilotage de projets</span><span class="skill-years">19 ans · Expert</span></div>
-      <div class="skill-bar"><div class="skill-fill"></div></div>
-    </div>
-    <div class="skill-row" data-level="100" data-years="19 ans">
-      <div class="skill-name"><span>Gestion des risques</span><span class="skill-years">19 ans · Expert</span></div>
-      <div class="skill-bar"><div class="skill-fill"></div></div>
-    </div>
-    <div class="skill-row" data-level="100" data-years="10 ans">
-      <div class="skill-name"><span>Veille technologique</span><span class="skill-years">10 ans · Expert</span></div>
-      <div class="skill-bar"><div class="skill-fill"></div></div>
-    </div>
-    <div class="skill-row" data-level="75" data-years="7 ans">
-      <div class="skill-name"><span>Web Marketing</span><span class="skill-years">7 ans · Très élevé</span></div>
-      <div class="skill-bar"><div class="skill-fill"></div></div>
-    </div>
-    <div class="skill-row" data-level="75" data-years="5 ans">
-      <div class="skill-name"><span>Stratégie commerciale</span><span class="skill-years">5 ans · Très élevé</span></div>
-      <div class="skill-bar"><div class="skill-fill"></div></div>
-    </div>
+<div class="skill-panel">
+  <p class="skill-panel-title">// Management</p>
+  <div class="skill-row" data-level="100">
+    <div class="skill-info"><span class="skill-name">Pilotage de projets</span><span class="skill-meta">19A · EXPERT</span></div>
+    <div class="skill-bar"><div class="skill-fill"></div></div>
+  </div>
+  <div class="skill-row" data-level="100">
+    <div class="skill-info"><span class="skill-name">Gestion des risques</span><span class="skill-meta">19A · EXPERT</span></div>
+    <div class="skill-bar"><div class="skill-fill"></div></div>
+  </div>
+  <div class="skill-row" data-level="100">
+    <div class="skill-info"><span class="skill-name">Veille technologique</span><span class="skill-meta">10A · EXPERT</span></div>
+    <div class="skill-bar"><div class="skill-fill"></div></div>
+  </div>
+  <div class="skill-row" data-level="75">
+    <div class="skill-info"><span class="skill-name">Web Marketing</span><span class="skill-meta">7A · ★★★</span></div>
+    <div class="skill-bar"><div class="skill-fill"></div></div>
+  </div>
+  <div class="skill-row" data-level="75">
+    <div class="skill-info"><span class="skill-name">Stratégie commerciale</span><span class="skill-meta">5A · ★★★</span></div>
+    <div class="skill-bar"><div class="skill-fill"></div></div>
   </div>
 </div>
 ```
@@ -771,88 +1022,107 @@ nav a { padding: 12px 16px; }
 <!-- SECTEURS -->
 
 <section id="secteurs">
-  <div class="container">
-    <p class="section-label">Domaines</p>
-    <h2 class="section-title">Secteurs &amp; Spécialisations</h2>
-    <div class="sectors-wrap">
-      <span class="sector-pill">User Experience</span>
-      <span class="sector-pill">Marketing digital</span>
-      <span class="sector-pill">Innovation logicielle</span>
-      <span class="sector-pill">E-Commerce</span>
-      <span class="sector-pill">Retail</span>
-      <span class="sector-pill">Automobile</span>
-      <span class="sector-pill">Manufacturing</span>
-      <span class="sector-pill">Plasturgie</span>
-      <span class="sector-pill">Éditeur logiciel ERP</span>
-      <span class="sector-pill">Qualité logicielle</span>
-      <span class="sector-pill">Design Thinking</span>
-      <span class="sector-pill">Agile &amp; PMI</span>
-    </div>
+  <div class="section-header">
+    <p class="section-id">// MODULE_03 :: SECTORS.MAP</p>
+    <h2 class="section-title">Secteurs</h2>
+  </div>
+
+  <div class="sectors-grid">
+    <div class="sector-cell">User Experience</div>
+    <div class="sector-cell">Marketing Digital</div>
+    <div class="sector-cell">Innovation Logicielle</div>
+    <div class="sector-cell">E-Commerce</div>
+    <div class="sector-cell">Retail</div>
+    <div class="sector-cell">Automobile</div>
+    <div class="sector-cell">Manufacturing</div>
+    <div class="sector-cell">Plasturgie</div>
+    <div class="sector-cell">Éditeur ERP</div>
+    <div class="sector-cell">Qualité Logicielle</div>
+    <div class="sector-cell">Design Thinking</div>
+    <div class="sector-cell">Agile &amp; PMI</div>
   </div>
 </section>
 
 <!-- FORMATION -->
 
 <section id="formation">
-  <div class="container">
-    <p class="section-label">Parcours académique</p>
+  <div class="section-header">
+    <p class="section-id">// MODULE_04 :: EDUCATION.SYS</p>
     <h2 class="section-title">Formation</h2>
-
-```
-<div class="edu-grid">
-  <div class="edu-card">
-    <p class="edu-year">1999</p>
-    <h3 class="edu-degree">Diplôme d'Ingénieur</h3>
-    <p class="edu-school">ENISE — École Nationale d'Ingénieurs de Saint-Étienne</p>
   </div>
-  <div class="edu-card">
-    <p class="edu-year">1994</p>
-    <h3 class="edu-degree">BAC E</h3>
-    <p class="edu-school">Clermont-Ferrand</p>
+
+  <div class="edu-grid">
+    <div class="edu-card">
+      <p class="edu-year">// 1999</p>
+      <h3 class="edu-degree">Diplôme d'Ingénieur</h3>
+      <p class="edu-school">ENISE — Saint-Étienne</p>
+    </div>
+    <div class="edu-card">
+      <p class="edu-year">// 1994</p>
+      <h3 class="edu-degree">BAC E</h3>
+      <p class="edu-school">Clermont-Ferrand</p>
+    </div>
   </div>
-</div>
 
-<div class="certs-grid">
-  <span class="cert-chip">CMMI</span>
-  <span class="cert-chip">HP Quality Center</span>
-  <span class="cert-chip">HP Functional Testing &amp; BPT</span>
-  <span class="cert-chip">MS Project</span>
-  <span class="cert-chip">JIRA · Confluence</span>
-  <span class="cert-chip">Prestashop · Magento</span>
-</div>
-```
-
+  <p class="certs-title">// CERTIFICATIONS &amp; OUTILS</p>
+  <div class="certs-grid">
+    <span class="cert-chip">CMMI</span>
+    <span class="cert-chip">HP Quality Center</span>
+    <span class="cert-chip">HP Functional Testing &amp; BPT</span>
+    <span class="cert-chip">MS Project</span>
+    <span class="cert-chip">JIRA · Confluence</span>
+    <span class="cert-chip">Prestashop · Magento</span>
   </div>
 </section>
 
 <!-- FOOTER -->
 
 <footer>
-  <strong>Stéphane Liabeuf</strong>
-  Directeur Conseil · UX &amp; Digital Manager · CGI — Clermont-Ferrand
+  <div class="footer-name">LIABEUF_STÉPHANE</div>
+  <div class="footer-info">
+    CGI GROUP // CLERMONT-FERRAND<br>
+    UX &amp; DIGITAL MANAGER // DIRECTEUR CONSEIL<br>
+    <span style="color:var(--green)">STATUS: AVAILABLE</span>
+  </div>
 </footer>
 
 <script>
-  // Intersection Observer for section animations
-  const sections = document.querySelectorAll('section');
+  // Custom cursor
+  const dot = document.getElementById('cursorDot');
+  document.addEventListener('mousemove', e => {
+    dot.style.left = e.clientX + 'px';
+    dot.style.top = e.clientY + 'px';
+  });
+
+  // Scroll animations
   const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        // Animate skill bars when skills section becomes visible
-        if (e.target.id === 'competences') {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        if (entry.target.id === 'competences') {
           setTimeout(() => {
             document.querySelectorAll('.skill-row').forEach(row => {
-              const fill = row.querySelector('.skill-fill');
-              fill.style.width = row.dataset.level + '%';
+              row.querySelector('.skill-fill').style.width = row.dataset.level + '%';
             });
-          }, 200);
+          }, 300);
         }
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
 
-  sections.forEach(s => obs.observe(s));
+  document.querySelectorAll('section').forEach(s => obs.observe(s));
+
+  // Typing effect for hero id
+  const heroId = document.querySelector('.hero-id');
+  const txt = heroId.innerHTML;
+  heroId.innerHTML = '';
+  let i = 0;
+  setTimeout(() => {
+    const timer = setInterval(() => {
+      heroId.innerHTML = txt.slice(0, i++);
+      if (i > txt.length) clearInterval(timer);
+    }, 18);
+  }, 400);
 </script>
 
 </body>
