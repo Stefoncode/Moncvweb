@@ -1,733 +1,735 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LIABEUF_STÉPHANE // CV.EXE</title>
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Primary: Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+<!-- Fallback: Bunny Fonts (GDPR-friendly mirror) -->
+<link href="https://fonts.bunny.net/css2?family=orbitron:wght@400;700;900&family=share-tech-mono&family=rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-:root {
-–bg: #050810;
-–bg2: #080d1a;
-–cyan: #00f5ff;
-–magenta: #ff00aa;
-–yellow: #ffe600;
-–green: #00ff88;
-–dark-cyan: #003d40;
-–text: #c8d8e8;
-–muted: #4a6080;
-–grid: rgba(0,245,255,0.04);
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-font-family: ‘Rajdhani’, sans-serif;
-background: var(–bg);
-color: var(–text);
-overflow-x: hidden;
-cursor: crosshair;
-}
-
-/* ── SCANLINES overlay ── */
-body::before {
-content: ‘’;
-position: fixed;
-inset: 0;
-background: repeating-linear-gradient(
-0deg,
-transparent,
-transparent 2px,
-rgba(0,0,0,0.15) 2px,
-rgba(0,0,0,0.15) 4px
-);
-pointer-events: none;
-z-index: 9999;
-}
-
-/* ── GRID background ── */
-body::after {
-content: ‘’;
-position: fixed;
-inset: 0;
-background-image:
-linear-gradient(var(–grid) 1px, transparent 1px),
-linear-gradient(90deg, var(–grid) 1px, transparent 1px);
-background-size: 40px 40px;
-pointer-events: none;
-z-index: 0;
-}
-
-/* ── GLITCH TEXT ── */
-.glitch {
-position: relative;
-}
-.glitch::before, .glitch::after {
-content: attr(data-text);
-position: absolute;
-top: 0; left: 0;
-width: 100%; height: 100%;
-}
-.glitch::before {
-color: var(–magenta);
-animation: glitch1 3s infinite;
-clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
-}
-.glitch::after {
-color: var(–cyan);
-animation: glitch2 3s infinite;
-clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
-}
-
-@keyframes glitch1 {
-0%, 90%, 100% { transform: none; opacity: 1; }
-91% { transform: translate(-3px, 1px); opacity: 0.8; }
-93% { transform: translate(3px, -1px); opacity: 0.8; }
-95% { transform: translate(-2px, 2px); opacity: 0.8; }
-97% { transform: none; opacity: 1; }
-}
-@keyframes glitch2 {
-0%, 90%, 100% { transform: none; opacity: 1; }
-92% { transform: translate(3px, 2px); opacity: 0.8; }
-94% { transform: translate(-3px, -1px); opacity: 0.8; }
-96% { transform: translate(2px, -2px); opacity: 0.8; }
-98% { transform: none; opacity: 1; }
-}
-
-/* ── HERO ── */
-.hero {
-position: relative;
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-justify-content: center;
-padding: 0 80px;
-z-index: 1;
-overflow: hidden;
-}
-
-.hero-bg {
-position: absolute;
-inset: 0;
-background:
-radial-gradient(ellipse 60% 80% at 80% 50%, rgba(0,245,255,0.06) 0%, transparent 70%),
-radial-gradient(ellipse 40% 60% at 10% 80%, rgba(255,0,170,0.08) 0%, transparent 60%);
-z-index: 0;
-}
-
-.hero-corner {
-position: absolute;
-font-family: ‘Share Tech Mono’, monospace;
-font-size: 11px;
-color: var(–muted);
-z-index: 2;
-}
-.hero-corner.tl { top: 32px; left: 80px; }
-.hero-corner.tr { top: 32px; right: 80px; text-align: right; }
-.hero-corner.bl { bottom: 32px; left: 80px; }
-.hero-corner.br { bottom: 32px; right: 80px; text-align: right; }
-
-/* corner brackets */
-.corner-bracket {
-position: absolute;
-width: 24px; height: 24px;
-z-index: 2;
-}
-.corner-bracket.tl { top: 20px; left: 60px; border-top: 2px solid var(–cyan); border-left: 2px solid var(–cyan); }
-.corner-bracket.tr { top: 20px; right: 60px; border-top: 2px solid var(–cyan); border-right: 2px solid var(–cyan); }
-.corner-bracket.bl { bottom: 20px; left: 60px; border-bottom: 2px solid var(–cyan); border-left: 2px solid var(–cyan); }
-.corner-bracket.br { bottom: 20px; right: 60px; border-bottom: 2px solid var(–cyan); border-right: 2px solid var(–cyan); }
-
-.hero-id {
-position: relative;
-z-index: 2;
-font-family: ‘Share Tech Mono’, monospace;
-font-size: 12px;
-color: var(–cyan);
-letter-spacing: 0.3em;
-margin-bottom: 20px;
-opacity: 0;
-animation: fadeIn 0.5s ease 0.3s forwards;
-}
-
-.hero-id span { color: var(–magenta); }
-
-.hero-name {
-position: relative;
-z-index: 2;
-font-family: ‘Orbitron’, monospace;
-font-size: clamp(48px, 8vw, 110px);
-font-weight: 900;
-line-height: 0.9;
-color: #fff;
-text-transform: uppercase;
-letter-spacing: -0.02em;
-opacity: 0;
-animation: fadeIn 0.6s ease 0.5s forwards;
-}
-
-.hero-name .line2 {
-display: block;
-color: transparent;
--webkit-text-stroke: 1px var(–cyan);
-text-shadow: 0 0 30px rgba(0,245,255,0.4);
-}
-
-.hero-subtitle {
-position: relative;
-z-index: 2;
-margin-top: 24px;
-font-family: ‘Share Tech Mono’, monospace;
-font-size: 14px;
-color: var(–magenta);
-letter-spacing: 0.2em;
-opacity: 0;
-animation: fadeIn 0.6s ease 0.7s forwards;
-}
-
-.hero-subtitle::before { content: ’> ’; color: var(–green); }
-
-.hero-stats {
-position: relative;
-z-index: 2;
-display: flex;
-gap: 48px;
-margin-top: 56px;
-opacity: 0;
-animation: fadeIn 0.6s ease 0.9s forwards;
-}
-
-.stat-box {
-border: 1px solid rgba(0,245,255,0.25);
-padding: 16px 24px;
-position: relative;
-background: rgba(0,245,255,0.03);
-clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
-}
-
-.stat-box::before {
-content: ‘’;
-position: absolute;
-top: -1px; left: -1px; right: -1px; bottom: -1px;
-background: linear-gradient(135deg, var(–cyan), transparent 50%);
-clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
-z-index: -1;
-opacity: 0.3;
-}
-
-.stat-num {
-font-family: ‘Orbitron’, monospace;
-font-size: 36px;
-font-weight: 700;
-color: var(–cyan);
-display: block;
-text-shadow: 0 0 20px rgba(0,245,255,0.6);
-}
-
-.stat-label {
-font-family: ‘Share Tech Mono’, monospace;
-font-size: 10px;
-letter-spacing: 0.15em;
-color: var(–muted);
-text-transform: uppercase;
-}
-
-.hero-scroll {
-position: absolute;
-bottom: 48px;
-left: 50%;
-transform: translateX(-50%);
-z-index: 2;
-font-family: ‘Share Tech Mono’, monospace;
-font-size: 10px;
-letter-spacing: 0.2em;
-color: var(–muted);
-text-align: center;
-animation: pulse 2s ease infinite;
-}
-
-@keyframes pulse {
-0%, 100% { opacity: 0.4; }
-50% { opacity: 1; }
-}
-
-/* ── NAV ── */
-nav {
-position: sticky;
-top: 0;
-z-index: 100;
-background: rgba(5,8,16,0.92);
-backdrop-filter: blur(16px);
-border-bottom: 1px solid rgba(0,245,255,0.15);
-display: flex;
-align-items: center;
-padding: 0 48px;
-gap: 0;
-}
-
-.nav-logo {
-font-family: ‘Orbitron’, monospace;
-font-size: 12px;
-font-weight: 700;
-color: var(–cyan);
-letter-spacing: 0.2em;
-margin-right: auto;
-text-shadow: 0 0 10px rgba(0,245,255,0.5);
-}
-
-nav a {
-font-family: ‘Share Tech Mono’, monospace;
-font-size: 11px;
-letter-spacing: 0.2em;
-text-transform: uppercase;
-color: var(–muted);
-text-decoration: none;
-padding: 18px 24px;
-transition: color 0.2s;
-position: relative;
-}
-
-nav a::before {
-content: ‘//’;
-color: var(–magenta);
-margin-right: 6px;
-opacity: 0;
-transition: opacity 0.2s;
-}
-
-nav a:hover { color: var(–cyan); }
-nav a:hover::before { opacity: 1; }
-
-/* ── SECTIONS ── */
-section {
-position: relative;
-z-index: 1;
-padding: 100px 80px;
-opacity: 0;
-transform: translateY(20px);
-transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-section.visible { opacity: 1; transform: none; }
-
-.section-header {
-margin-bottom: 64px;
-}
-
-.section-id {
-font-family: ‘Share Tech Mono’, monospace;
-font-size: 11px;
-color: var(–magenta);
-letter-spacing: 0.3em;
-margin-bottom: 12px;
-}
-
-.section-title {
-font-family: ‘Orbitron’, monospace;
-font-size: clamp(28px, 4vw, 48px);
-font-weight: 700;
-color: #fff;
-text-transform: uppercase;
-letter-spacing: 0.05em;
-position: relative;
-display: inline-block;
-}
-
-.section-title::after {
-content: ‘’;
-display: block;
-margin-top: 12px;
-height: 2px;
-background: linear-gradient(90deg, var(–cyan), var(–magenta), transparent);
-}
-
-/* ── EXPERIENCE ── */
-#experience { background: var(–bg); }
-
-.exp-list { display: grid; gap: 2px; }
-
-.exp-item {
-display: grid;
-grid-template-columns: 220px 1fr;
-border-top: 1px solid rgba(0,245,255,0.1);
-padding: 36px 0;
-gap: 0;
-transition: background 0.2s;
-position: relative;
-}
-
-.exp-item:last-child { border-bottom: 1px solid rgba(0,245,255,0.1); }
-
-.exp-item::before {
-content: ‘’;
-position: absolute;
-left: -80px; right: -80px; top: 0; bottom: 0;
-background: rgba(0,245,255,0.02);
-opacity: 0;
-transition: opacity 0.25s;
-}
-
-.exp-item:hover::before { opacity: 1; }
-
-.exp-left {
-padding-right: 32px;
-padding-top: 4px;
-}
-
-.exp-period {
-font-family: ‘Share Tech Mono’, monospace;
-font-size: 11px;
-color: var(–cyan);
-letter-spacing: 0.1em;
-margin-bottom: 8px;
-}
-
-.exp-co {
-font-family: ‘Share Tech Mono’, monospace;
-font-size: 10px;
-color: var(–muted);
-letter-spacing: 0.12em;
-text-transform: uppercase;
-}
-
-.exp-role {
-font-family: ‘Orbitron’, monospace;
-font-size: 16px;
-font-weight: 700;
-color: #fff;
-margin-bottom: 6px;
-text-transform: uppercase;
-letter-spacing: 0.05em;
-line-height: 1.3;
-}
-
-.exp-program {
-font-family: ‘Share Tech Mono’, monospace;
-font-size: 11px;
-color: var(–magenta);
-letter-spacing: 0.1em;
-margin-bottom: 12px;
-}
-
-.exp-desc {
-font-size: 14px;
-color: #7a9ab8;
-line-height: 1.7;
-max-width: 600px;
-}
-
-.exp-tags {
-display: flex;
-flex-wrap: wrap;
-gap: 8px;
-margin-top: 16px;
-}
-
-.exp-tag {
-font-family: ‘Share Tech Mono’, monospace;
-font-size: 10px;
-letter-spacing: 0.08em;
-color: var(–cyan);
-border: 1px solid rgba(0,245,255,0.3);
-padding: 3px 10px;
-text-transform: uppercase;
-clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
-background: rgba(0,245,255,0.05);
-}
-
-/* ── SKILLS ── */
-#competences { background: var(–bg2); }
-
-.skills-grid {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-gap: 32px;
-}
-
-.skill-panel {
-border: 1px solid rgba(0,245,255,0.12);
-padding: 28px;
-background: rgba(0,245,255,0.02);
-position: relative;
-clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
-}
-
-.skill-panel::before {
-content: ‘’;
-position: absolute;
-top: 0; right: 0;
-width: 0; height: 0;
-border-top: 16px solid rgba(0,245,255,0.3);
-border-left: 16px solid transparent;
-}
-
-.skill-panel-title {
-font-family: ‘Orbitron’, monospace;
-font-size: 11px;
-font-weight: 700;
-color: var(–magenta);
-letter-spacing: 0.2em;
-text-transform: uppercase;
-margin-bottom: 24px;
-padding-bottom: 12px;
-border-bottom: 1px solid rgba(255,0,170,0.2);
-}
-
-.skill-row {
-margin-bottom: 18px;
-}
-
-.skill-info {
-display: flex;
-justify-content: space-between;
-margin-bottom: 6px;
-}
-
-.skill-name {
-font-family: ‘Rajdhani’, sans-serif;
-font-size: 13px;
-font-weight: 600;
-color: var(–text);
-letter-spacing: 0.05em;
-}
-
-.skill-meta {
-font-family: ‘Share Tech Mono’, monospace;
-font-size: 10px;
-color: var(–muted);
-}
-
-.skill-bar {
-height: 3px;
-background: rgba(255,255,255,0.06);
-position: relative;
-overflow: visible;
-}
-
-.skill-fill {
-height: 100%;
-width: 0;
-background: linear-gradient(90deg, var(–cyan), var(–green));
-box-shadow: 0 0 8px var(–cyan);
-transition: width 1.4s cubic-bezier(0.4,0,0.2,1);
-position: relative;
-}
-
-.skill-fill::after {
-content: ‘’;
-position: absolute;
-right: -1px; top: -3px;
-width: 2px; height: 9px;
-background: #fff;
-box-shadow: 0 0 6px var(–cyan);
-}
-
-/* ── SECTORS ── */
-#secteurs { background: var(–bg); }
-
-.sectors-grid {
-display: grid;
-grid-template-columns: repeat(4, 1fr);
-gap: 2px;
-}
-
-.sector-cell {
-border: 1px solid rgba(0,245,255,0.08);
-padding: 20px 24px;
-font-family: ‘Rajdhani’, sans-serif;
-font-size: 15px;
-font-weight: 600;
-letter-spacing: 0.08em;
-text-transform: uppercase;
-color: var(–muted);
-transition: all 0.2s;
-cursor: default;
-position: relative;
-overflow: hidden;
-}
-
-.sector-cell::before {
-content: ‘◈’;
-margin-right: 10px;
-color: var(–magenta);
-font-size: 10px;
-}
-
-.sector-cell::after {
-content: ‘’;
-position: absolute;
-inset: 0;
-background: linear-gradient(135deg, rgba(0,245,255,0.07), transparent);
-opacity: 0;
-transition: opacity 0.25s;
-}
-
-.sector-cell:hover {
-color: var(–cyan);
-border-color: rgba(0,245,255,0.4);
-}
-
-.sector-cell:hover::after { opacity: 1; }
-
-/* ── FORMATION ── */
-#formation { background: var(–bg2); }
-
-.edu-grid {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 24px;
-margin-bottom: 48px;
-}
-
-.edu-card {
-border: 1px solid rgba(0,245,255,0.15);
-padding: 32px;
-background: rgba(0,245,255,0.03);
-position: relative;
-clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
-}
-
-.edu-card::before {
-content: ‘’;
-position: absolute;
-top: 0; right: 0;
-width: 0; height: 0;
-border-top: 20px solid rgba(0,245,255,0.4);
-border-left: 20px solid transparent;
-}
-
-.edu-year {
-font-family: ‘Share Tech Mono’, monospace;
-font-size: 11px;
-color: var(–magenta);
-letter-spacing: 0.2em;
-margin-bottom: 12px;
-}
-
-.edu-degree {
-font-family: ‘Orbitron’, monospace;
-font-size: 17px;
-font-weight: 700;
-color: #fff;
-margin-bottom: 8px;
-text-transform: uppercase;
-}
-
-.edu-school {
-font-family: ‘Share Tech Mono’, monospace;
-font-size: 12px;
-color: var(–muted);
-}
-
-.certs-title {
-font-family: ‘Orbitron’, monospace;
-font-size: 12px;
-color: var(–cyan);
-letter-spacing: 0.2em;
-margin-bottom: 20px;
-text-transform: uppercase;
-}
-
-.certs-grid {
-display: flex;
-flex-wrap: wrap;
-gap: 10px;
-}
-
-.cert-chip {
-font-family: ‘Share Tech Mono’, monospace;
-font-size: 11px;
-letter-spacing: 0.1em;
-color: var(–green);
-border: 1px solid rgba(0,255,136,0.25);
-padding: 6px 14px;
-background: rgba(0,255,136,0.04);
-text-transform: uppercase;
-}
-
-/* ── FOOTER ── */
-footer {
-position: relative;
-z-index: 1;
-background: var(–bg);
-border-top: 1px solid rgba(0,245,255,0.15);
-padding: 48px 80px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-}
-
-.footer-name {
-font-family: ‘Orbitron’, monospace;
-font-size: 20px;
-font-weight: 900;
-color: var(–cyan);
-text-shadow: 0 0 20px rgba(0,245,255,0.5);
-letter-spacing: 0.1em;
-}
-
-.footer-info {
-font-family: ‘Share Tech Mono’, monospace;
-font-size: 11px;
-color: var(–muted);
-text-align: right;
-line-height: 1.8;
-}
-
-/* ── NEON CURSOR dot ── */
-.cursor-dot {
-position: fixed;
-width: 8px; height: 8px;
-background: var(–cyan);
-border-radius: 50%;
-pointer-events: none;
-z-index: 10000;
-transform: translate(-50%, -50%);
-box-shadow: 0 0 10px var(–cyan), 0 0 20px rgba(0,245,255,0.5);
-transition: transform 0.05s;
-}
-
-/* ── FLICKER ── */
-@keyframes flicker {
-0%, 96%, 100% { opacity: 1; }
-97% { opacity: 0.7; }
-98% { opacity: 1; }
-99% { opacity: 0.6; }
-}
-
-.hero { animation: flicker 8s infinite; }
-
-@keyframes fadeIn {
-from { opacity: 0; transform: translateY(12px); }
-to { opacity: 1; transform: none; }
-}
-
-/* ── RESPONSIVE ── */
-@media (max-width: 900px) {
-section, .hero, footer { padding-left: 24px; padding-right: 24px; }
-.hero-stats { flex-wrap: wrap; gap: 16px; }
-.exp-item { grid-template-columns: 1fr; }
-.exp-left { margin-bottom: 12px; }
-.skills-grid { grid-template-columns: 1fr; }
-.sectors-grid { grid-template-columns: 1fr 1fr; }
-.edu-grid { grid-template-columns: 1fr; }
-.hero-corner.tr, .hero-corner.br { display: none; }
-nav { padding: 0 16px; }
-.nav-logo { font-size: 10px; }
-nav a { padding: 14px 12px; font-size: 10px; }
-}
+  :root {
+    --bg: #050810;
+    --bg2: #080d1a;
+    --cyan: #00f5ff;
+    --magenta: #ff00aa;
+    --yellow: #ffe600;
+    --green: #00ff88;
+    --dark-cyan: #003d40;
+    --text: #c8d8e8;
+    --muted: #4a6080;
+    --grid: rgba(0,245,255,0.04);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Rajdhani', 'Segoe UI', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    cursor: crosshair;
+  }
+
+  /* ── SCANLINES overlay ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.15) 2px,
+      rgba(0,0,0,0.15) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* ── GRID background ── */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── GLITCH TEXT ── */
+  .glitch {
+    position: relative;
+  }
+  .glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+  }
+  .glitch::before {
+    color: var(--magenta);
+    animation: glitch1 3s infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+  }
+  .glitch::after {
+    color: var(--cyan);
+    animation: glitch2 3s infinite;
+    clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+  }
+
+  @keyframes glitch1 {
+    0%, 90%, 100% { transform: none; opacity: 1; }
+    91% { transform: translate(-3px, 1px); opacity: 0.8; }
+    93% { transform: translate(3px, -1px); opacity: 0.8; }
+    95% { transform: translate(-2px, 2px); opacity: 0.8; }
+    97% { transform: none; opacity: 1; }
+  }
+  @keyframes glitch2 {
+    0%, 90%, 100% { transform: none; opacity: 1; }
+    92% { transform: translate(3px, 2px); opacity: 0.8; }
+    94% { transform: translate(-3px, -1px); opacity: 0.8; }
+    96% { transform: translate(2px, -2px); opacity: 0.8; }
+    98% { transform: none; opacity: 1; }
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 80px;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 80% 50%, rgba(0,245,255,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(255,0,170,0.08) 0%, transparent 60%);
+    z-index: 0;
+  }
+
+  .hero-corner {
+    position: absolute;
+    font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+    font-size: 11px;
+    color: var(--muted);
+    z-index: 2;
+  }
+  .hero-corner.tl { top: 32px; left: 80px; }
+  .hero-corner.tr { top: 32px; right: 80px; text-align: right; }
+  .hero-corner.bl { bottom: 32px; left: 80px; }
+  .hero-corner.br { bottom: 32px; right: 80px; text-align: right; }
+
+  /* corner brackets */
+  .corner-bracket {
+    position: absolute;
+    width: 24px; height: 24px;
+    z-index: 2;
+  }
+  .corner-bracket.tl { top: 20px; left: 60px; border-top: 2px solid var(--cyan); border-left: 2px solid var(--cyan); }
+  .corner-bracket.tr { top: 20px; right: 60px; border-top: 2px solid var(--cyan); border-right: 2px solid var(--cyan); }
+  .corner-bracket.bl { bottom: 20px; left: 60px; border-bottom: 2px solid var(--cyan); border-left: 2px solid var(--cyan); }
+  .corner-bracket.br { bottom: 20px; right: 60px; border-bottom: 2px solid var(--cyan); border-right: 2px solid var(--cyan); }
+
+  .hero-id {
+    position: relative;
+    z-index: 2;
+    font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+    font-size: 12px;
+    color: var(--cyan);
+    letter-spacing: 0.3em;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeIn 0.5s ease 0.3s forwards;
+  }
+
+  .hero-id span { color: var(--magenta); }
+
+  .hero-name {
+    position: relative;
+    z-index: 2;
+    font-family: 'Orbitron', 'Arial Black', Impact, sans-serif;
+    font-size: clamp(48px, 8vw, 110px);
+    font-weight: 900;
+    line-height: 0.9;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    opacity: 0;
+    animation: fadeIn 0.6s ease 0.5s forwards;
+  }
+
+  .hero-name .line2 {
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--cyan);
+    text-shadow: 0 0 30px rgba(0,245,255,0.4);
+  }
+
+  .hero-subtitle {
+    position: relative;
+    z-index: 2;
+    margin-top: 24px;
+    font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+    font-size: 14px;
+    color: var(--magenta);
+    letter-spacing: 0.2em;
+    opacity: 0;
+    animation: fadeIn 0.6s ease 0.7s forwards;
+  }
+
+  .hero-subtitle::before { content: '> '; color: var(--green); }
+
+  .hero-stats {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    gap: 48px;
+    margin-top: 56px;
+    opacity: 0;
+    animation: fadeIn 0.6s ease 0.9s forwards;
+  }
+
+  .stat-box {
+    border: 1px solid rgba(0,245,255,0.25);
+    padding: 16px 24px;
+    position: relative;
+    background: rgba(0,245,255,0.03);
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  }
+
+  .stat-box::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: -1px; right: -1px; bottom: -1px;
+    background: linear-gradient(135deg, var(--cyan), transparent 50%);
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+    z-index: -1;
+    opacity: 0.3;
+  }
+
+  .stat-num {
+    font-family: 'Orbitron', 'Arial Black', Impact, sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--cyan);
+    display: block;
+    text-shadow: 0 0 20px rgba(0,245,255,0.6);
+  }
+
+  .stat-label {
+    font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    text-align: center;
+    animation: pulse 2s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(5,8,16,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(0,245,255,0.15);
+    display: flex;
+    align-items: center;
+    padding: 0 48px;
+    gap: 0;
+  }
+
+  .nav-logo {
+    font-family: 'Orbitron', 'Arial Black', Impact, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--cyan);
+    letter-spacing: 0.2em;
+    margin-right: auto;
+    text-shadow: 0 0 10px rgba(0,245,255,0.5);
+  }
+
+  nav a {
+    font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 18px 24px;
+    transition: color 0.2s;
+    position: relative;
+  }
+
+  nav a::before {
+    content: '//';
+    color: var(--magenta);
+    margin-right: 6px;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  nav a:hover { color: var(--cyan); }
+  nav a:hover::before { opacity: 1; }
+
+  /* ── SECTIONS ── */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 100px 80px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  section.visible { opacity: 1; transform: none; }
+
+  .section-header {
+    margin-bottom: 64px;
+  }
+
+  .section-id {
+    font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+    font-size: 11px;
+    color: var(--magenta);
+    letter-spacing: 0.3em;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Orbitron', 'Arial Black', Impact, sans-serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: relative;
+    display: inline-block;
+  }
+
+  .section-title::after {
+    content: '';
+    display: block;
+    margin-top: 12px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--cyan), var(--magenta), transparent);
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--bg); }
+
+  .exp-list { display: grid; gap: 2px; }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    border-top: 1px solid rgba(0,245,255,0.1);
+    padding: 36px 0;
+    gap: 0;
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .exp-item:last-child { border-bottom: 1px solid rgba(0,245,255,0.1); }
+
+  .exp-item::before {
+    content: '';
+    position: absolute;
+    left: -80px; right: -80px; top: 0; bottom: 0;
+    background: rgba(0,245,255,0.02);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .exp-item:hover::before { opacity: 1; }
+
+  .exp-left {
+    padding-right: 32px;
+    padding-top: 4px;
+  }
+
+  .exp-period {
+    font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+    font-size: 11px;
+    color: var(--cyan);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+
+  .exp-co {
+    font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .exp-role {
+    font-family: 'Orbitron', 'Arial Black', Impact, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.3;
+  }
+
+  .exp-program {
+    font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+    font-size: 11px;
+    color: var(--magenta);
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+
+  .exp-desc {
+    font-size: 14px;
+    color: #7a9ab8;
+    line-height: 1.7;
+    max-width: 600px;
+  }
+
+  .exp-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .exp-tag {
+    font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--cyan);
+    border: 1px solid rgba(0,245,255,0.3);
+    padding: 3px 10px;
+    text-transform: uppercase;
+    clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+    background: rgba(0,245,255,0.05);
+  }
+
+  /* ── SKILLS ── */
+  #competences { background: var(--bg2); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .skill-panel {
+    border: 1px solid rgba(0,245,255,0.12);
+    padding: 28px;
+    background: rgba(0,245,255,0.02);
+    position: relative;
+    clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+  }
+
+  .skill-panel::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 0; height: 0;
+    border-top: 16px solid rgba(0,245,255,0.3);
+    border-left: 16px solid transparent;
+  }
+
+  .skill-panel-title {
+    font-family: 'Orbitron', 'Arial Black', Impact, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--magenta);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,0,170,0.2);
+  }
+
+  .skill-row {
+    margin-bottom: 18px;
+  }
+
+  .skill-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
+  .skill-name {
+    font-family: 'Rajdhani', 'Segoe UI', Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: 0.05em;
+  }
+
+  .skill-meta {
+    font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+    font-size: 10px;
+    color: var(--muted);
+  }
+
+  .skill-bar {
+    height: 3px;
+    background: rgba(255,255,255,0.06);
+    position: relative;
+    overflow: visible;
+  }
+
+  .skill-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--cyan), var(--green));
+    box-shadow: 0 0 8px var(--cyan);
+    transition: width 1.4s cubic-bezier(0.4,0,0.2,1);
+    position: relative;
+  }
+
+  .skill-fill::after {
+    content: '';
+    position: absolute;
+    right: -1px; top: -3px;
+    width: 2px; height: 9px;
+    background: #fff;
+    box-shadow: 0 0 6px var(--cyan);
+  }
+
+  /* ── SECTORS ── */
+  #secteurs { background: var(--bg); }
+
+  .sectors-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+
+  .sector-cell {
+    border: 1px solid rgba(0,245,255,0.08);
+    padding: 20px 24px;
+    font-family: 'Rajdhani', 'Segoe UI', Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    transition: all 0.2s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sector-cell::before {
+    content: '◈';
+    margin-right: 10px;
+    color: var(--magenta);
+    font-size: 10px;
+  }
+
+  .sector-cell::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,245,255,0.07), transparent);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .sector-cell:hover {
+    color: var(--cyan);
+    border-color: rgba(0,245,255,0.4);
+  }
+
+  .sector-cell:hover::after { opacity: 1; }
+
+  /* ── FORMATION ── */
+  #formation { background: var(--bg2); }
+
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  .edu-card {
+    border: 1px solid rgba(0,245,255,0.15);
+    padding: 32px;
+    background: rgba(0,245,255,0.03);
+    position: relative;
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+  }
+
+  .edu-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 0; height: 0;
+    border-top: 20px solid rgba(0,245,255,0.4);
+    border-left: 20px solid transparent;
+  }
+
+  .edu-year {
+    font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+    font-size: 11px;
+    color: var(--magenta);
+    letter-spacing: 0.2em;
+    margin-bottom: 12px;
+  }
+
+  .edu-degree {
+    font-family: 'Orbitron', 'Arial Black', Impact, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .edu-school {
+    font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .certs-title {
+    font-family: 'Orbitron', 'Arial Black', Impact, sans-serif;
+    font-size: 12px;
+    color: var(--cyan);
+    letter-spacing: 0.2em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .certs-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .cert-chip {
+    font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--green);
+    border: 1px solid rgba(0,255,136,0.25);
+    padding: 6px 14px;
+    background: rgba(0,255,136,0.04);
+    text-transform: uppercase;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    background: var(--bg);
+    border-top: 1px solid rgba(0,245,255,0.15);
+    padding: 48px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-name {
+    font-family: 'Orbitron', 'Arial Black', Impact, sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--cyan);
+    text-shadow: 0 0 20px rgba(0,245,255,0.5);
+    letter-spacing: 0.1em;
+  }
+
+  .footer-info {
+    font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+    font-size: 11px;
+    color: var(--muted);
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  /* ── NEON CURSOR dot ── */
+  .cursor-dot {
+    position: fixed;
+    width: 8px; height: 8px;
+    background: var(--cyan);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px var(--cyan), 0 0 20px rgba(0,245,255,0.5);
+    transition: transform 0.05s;
+  }
+
+  /* ── FLICKER ── */
+  @keyframes flicker {
+    0%, 96%, 100% { opacity: 1; }
+    97% { opacity: 0.7; }
+    98% { opacity: 1; }
+    99% { opacity: 0.6; }
+  }
+
+  .hero { animation: flicker 8s infinite; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    section, .hero, footer { padding-left: 24px; padding-right: 24px; }
+    .hero-stats { flex-wrap: wrap; gap: 16px; }
+    .exp-item { grid-template-columns: 1fr; }
+    .exp-left { margin-bottom: 12px; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .sectors-grid { grid-template-columns: 1fr 1fr; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .hero-corner.tr, .hero-corner.br { display: none; }
+    nav { padding: 0 16px; }
+    .nav-logo { font-size: 10px; }
+    nav a { padding: 14px 12px; font-size: 10px; }
+  }
 </style>
-
 </head>
 <body>
 
 <div class="cursor-dot" id="cursorDot"></div>
 
 <!-- HERO -->
-
 <header class="hero">
   <div class="hero-bg"></div>
 
@@ -773,7 +775,6 @@ nav a { padding: 14px 12px; font-size: 10px; }
 </header>
 
 <!-- NAV -->
-
 <nav>
   <span class="nav-logo">SL://CV</span>
   <a href="#experience">Parcours</a>
@@ -783,7 +784,6 @@ nav a { padding: 14px 12px; font-size: 10px; }
 </nav>
 
 <!-- EXPERIENCE -->
-
 <section id="experience">
   <div class="section-header">
     <p class="section-id">// MODULE_01 :: EXPERIENCE.LOG</p>
@@ -792,149 +792,146 @@ nav a { padding: 14px 12px; font-size: 10px; }
 
   <div class="exp-list">
 
-```
-<div class="exp-item">
-  <div class="exp-left">
-    <p class="exp-period">2021 → NOW</p>
-    <p class="exp-co">CGI · Clermont-Ferrand</p>
-  </div>
-  <div>
-    <h3 class="exp-role">Directeur Conseil<br>UX &amp; Digital Manager</h3>
-    <p class="exp-desc">Développement de l'offre UX/UI sur le marché de Clermont-Ferrand. Accompagnement du déploiement UX/UI au sein des business units Michelin, mise en œuvre de KPIs pour évaluer la progression et améliorer l'expérience utilisateur final.</p>
-    <div class="exp-tags">
-      <span class="exp-tag">UX/UI</span>
-      <span class="exp-tag">KPIs</span>
-      <span class="exp-tag">Michelin</span>
-      <span class="exp-tag">Business dev</span>
+    <div class="exp-item">
+      <div class="exp-left">
+        <p class="exp-period">2021 → NOW</p>
+        <p class="exp-co">CGI · Clermont-Ferrand</p>
+      </div>
+      <div>
+        <h3 class="exp-role">Directeur Conseil<br>UX &amp; Digital Manager</h3>
+        <p class="exp-desc">Développement de l'offre UX/UI sur le marché de Clermont-Ferrand. Accompagnement du déploiement UX/UI au sein des business units Michelin, mise en œuvre de KPIs pour évaluer la progression et améliorer l'expérience utilisateur final.</p>
+        <div class="exp-tags">
+          <span class="exp-tag">UX/UI</span>
+          <span class="exp-tag">KPIs</span>
+          <span class="exp-tag">Michelin</span>
+          <span class="exp-tag">Business dev</span>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<div class="exp-item">
-  <div class="exp-left">
-    <p class="exp-period">2019 → 2021</p>
-    <p class="exp-co">CGI · Michelin</p>
-  </div>
-  <div>
-    <h3 class="exp-role">Delivery Manager</h3>
-    <p class="exp-program">// PROGRAMME ENGAGE — SALESFORCE</p>
-    <p class="exp-desc">Intégration complète des outils et services Michelin dans Salesforce. Pilotage de la planification dans un environnement complexe : ~40 squads sur 3 pays (USA, France, Maroc) en mode agile distribué.</p>
-    <div class="exp-tags">
-      <span class="exp-tag">Salesforce</span>
-      <span class="exp-tag">Agile distrib.</span>
-      <span class="exp-tag">~40 squads</span>
-      <span class="exp-tag">3 pays</span>
+    <div class="exp-item">
+      <div class="exp-left">
+        <p class="exp-period">2019 → 2021</p>
+        <p class="exp-co">CGI · Michelin</p>
+      </div>
+      <div>
+        <h3 class="exp-role">Delivery Manager</h3>
+        <p class="exp-program">// PROGRAMME ENGAGE — SALESFORCE</p>
+        <p class="exp-desc">Intégration complète des outils et services Michelin dans Salesforce. Pilotage de la planification dans un environnement complexe : ~40 squads sur 3 pays (USA, France, Maroc) en mode agile distribué.</p>
+        <div class="exp-tags">
+          <span class="exp-tag">Salesforce</span>
+          <span class="exp-tag">Agile distrib.</span>
+          <span class="exp-tag">~40 squads</span>
+          <span class="exp-tag">3 pays</span>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<div class="exp-item">
-  <div class="exp-left">
-    <p class="exp-period">2017 → 2019</p>
-    <p class="exp-co">CGI · Michelin</p>
-  </div>
-  <div>
-    <h3 class="exp-role">Directeur Projet<br>BI Europe</h3>
-    <p class="exp-program">// PROGRAMME ENGAGE — SALESFORCE</p>
-    <p class="exp-desc">Outil BI Europe pour 2 000 commerciaux Michelin dans 39 pays et 25 langues. Pilotage des ventes et commandes jusqu'au SKU, intégré dans Salesforce CRM dans le cadre du programme de transformation customer-centric.</p>
-    <div class="exp-tags">
-      <span class="exp-tag">BI</span>
-      <span class="exp-tag">2000 users</span>
-      <span class="exp-tag">39 pays</span>
-      <span class="exp-tag">25 langues</span>
-      <span class="exp-tag">Salesforce</span>
+    <div class="exp-item">
+      <div class="exp-left">
+        <p class="exp-period">2017 → 2019</p>
+        <p class="exp-co">CGI · Michelin</p>
+      </div>
+      <div>
+        <h3 class="exp-role">Directeur Projet<br>BI Europe</h3>
+        <p class="exp-program">// PROGRAMME ENGAGE — SALESFORCE</p>
+        <p class="exp-desc">Outil BI Europe pour 2 000 commerciaux Michelin dans 39 pays et 25 langues. Pilotage des ventes et commandes jusqu'au SKU, intégré dans Salesforce CRM dans le cadre du programme de transformation customer-centric.</p>
+        <div class="exp-tags">
+          <span class="exp-tag">BI</span>
+          <span class="exp-tag">2000 users</span>
+          <span class="exp-tag">39 pays</span>
+          <span class="exp-tag">25 langues</span>
+          <span class="exp-tag">Salesforce</span>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<div class="exp-item">
-  <div class="exp-left">
-    <p class="exp-period">2016 → 2017</p>
-    <p class="exp-co">Le Temps des Travaux</p>
-  </div>
-  <div>
-    <h3 class="exp-role">Dir. Associé E-Commerce &amp; CTO</h3>
-    <p class="exp-desc">Élaboration du SI, stratégie de marque, refonte complète du site E-Commerce. CA de 450 k€ dès la 1ère année. Stratégie webmarketing, hébergement et sécurité serveur dédié.</p>
-    <div class="exp-tags">
-      <span class="exp-tag">E-Commerce</span>
-      <span class="exp-tag">CTO</span>
-      <span class="exp-tag">450 k€ CA</span>
-      <span class="exp-tag">Webmarketing</span>
+    <div class="exp-item">
+      <div class="exp-left">
+        <p class="exp-period">2016 → 2017</p>
+        <p class="exp-co">Le Temps des Travaux</p>
+      </div>
+      <div>
+        <h3 class="exp-role">Dir. Associé E-Commerce &amp; CTO</h3>
+        <p class="exp-desc">Élaboration du SI, stratégie de marque, refonte complète du site E-Commerce. CA de 450 k€ dès la 1ère année. Stratégie webmarketing, hébergement et sécurité serveur dédié.</p>
+        <div class="exp-tags">
+          <span class="exp-tag">E-Commerce</span>
+          <span class="exp-tag">CTO</span>
+          <span class="exp-tag">450 k€ CA</span>
+          <span class="exp-tag">Webmarketing</span>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<div class="exp-item">
-  <div class="exp-left">
-    <p class="exp-period">2013 → 2016</p>
-    <p class="exp-co">Trismégiste Intl · vetality.fr</p>
-  </div>
-  <div>
-    <h3 class="exp-role">Directeur E-Commerce</h3>
-    <p class="exp-desc">Création du pôle E-Commerce de zéro : marque, recrutement, SI, logistique. CA de 900 k€ dès la 1ère année (obj. 1 M€). Rentabilité atteinte au 15e mois (obj. 24 mois).</p>
-    <div class="exp-tags">
-      <span class="exp-tag">Création ex-nihilo</span>
-      <span class="exp-tag">900 k€</span>
-      <span class="exp-tag">Retail</span>
+    <div class="exp-item">
+      <div class="exp-left">
+        <p class="exp-period">2013 → 2016</p>
+        <p class="exp-co">Trismégiste Intl · vetality.fr</p>
+      </div>
+      <div>
+        <h3 class="exp-role">Directeur E-Commerce</h3>
+        <p class="exp-desc">Création du pôle E-Commerce de zéro : marque, recrutement, SI, logistique. CA de 900 k€ dès la 1ère année (obj. 1 M€). Rentabilité atteinte au 15e mois (obj. 24 mois).</p>
+        <div class="exp-tags">
+          <span class="exp-tag">Création ex-nihilo</span>
+          <span class="exp-tag">900 k€</span>
+          <span class="exp-tag">Retail</span>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<div class="exp-item">
-  <div class="exp-left">
-    <p class="exp-period">2010 → 2013</p>
-    <p class="exp-co">Indépendant</p>
-  </div>
-  <div>
-    <h3 class="exp-role">Consultant Digital &amp; UX Designer</h3>
-    <p class="exp-desc">Conseil en stratégie digitale, audit &amp; préconisation, webmarketing, social media acquisition, conception digitale et développement.</p>
-    <div class="exp-tags">
-      <span class="exp-tag">Conseil</span>
-      <span class="exp-tag">UX Design</span>
-      <span class="exp-tag">Social Media</span>
+    <div class="exp-item">
+      <div class="exp-left">
+        <p class="exp-period">2010 → 2013</p>
+        <p class="exp-co">Indépendant</p>
+      </div>
+      <div>
+        <h3 class="exp-role">Consultant Digital &amp; UX Designer</h3>
+        <p class="exp-desc">Conseil en stratégie digitale, audit &amp; préconisation, webmarketing, social media acquisition, conception digitale et développement.</p>
+        <div class="exp-tags">
+          <span class="exp-tag">Conseil</span>
+          <span class="exp-tag">UX Design</span>
+          <span class="exp-tag">Social Media</span>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<div class="exp-item">
-  <div class="exp-left">
-    <p class="exp-period">2005 → 2010</p>
-    <p class="exp-co">Sescoi International (Hexagon)</p>
-  </div>
-  <div>
-    <h3 class="exp-role">Resp. Produit ERP<br>Innovation &amp; Industrialisation</h3>
-    <div class="exp-tags"><span class="exp-tag">ERP</span><span class="exp-tag">Product Mgmt</span></div>
-  </div>
-</div>
+    <div class="exp-item">
+      <div class="exp-left">
+        <p class="exp-period">2005 → 2010</p>
+        <p class="exp-co">Sescoi International (Hexagon)</p>
+      </div>
+      <div>
+        <h3 class="exp-role">Resp. Produit ERP<br>Innovation &amp; Industrialisation</h3>
+        <div class="exp-tags"><span class="exp-tag">ERP</span><span class="exp-tag">Product Mgmt</span></div>
+      </div>
+    </div>
 
-<div class="exp-item">
-  <div class="exp-left">
-    <p class="exp-period">2001 → 2005</p>
-    <p class="exp-co">Sescoi International (Hexagon)</p>
-  </div>
-  <div>
-    <h3 class="exp-role">Resp. Dev Scheduling &amp; BA ERP Europe</h3>
-    <div class="exp-tags"><span class="exp-tag">ERP</span><span class="exp-tag">Business Analysis</span><span class="exp-tag">Europe</span></div>
-  </div>
-</div>
+    <div class="exp-item">
+      <div class="exp-left">
+        <p class="exp-period">2001 → 2005</p>
+        <p class="exp-co">Sescoi International (Hexagon)</p>
+      </div>
+      <div>
+        <h3 class="exp-role">Resp. Dev Scheduling &amp; BA ERP Europe</h3>
+        <div class="exp-tags"><span class="exp-tag">ERP</span><span class="exp-tag">Business Analysis</span><span class="exp-tag">Europe</span></div>
+      </div>
+    </div>
 
-<div class="exp-item">
-  <div class="exp-left">
-    <p class="exp-period">1999 → 2001</p>
-    <p class="exp-co">Moul'Anjou Plastique</p>
-  </div>
-  <div>
-    <h3 class="exp-role">Resp. Projet ERP · Injection Plastique</h3>
-    <div class="exp-tags"><span class="exp-tag">ERP</span><span class="exp-tag">Plasturgie</span></div>
-  </div>
-</div>
-```
+    <div class="exp-item">
+      <div class="exp-left">
+        <p class="exp-period">1999 → 2001</p>
+        <p class="exp-co">Moul'Anjou Plastique</p>
+      </div>
+      <div>
+        <h3 class="exp-role">Resp. Projet ERP · Injection Plastique</h3>
+        <div class="exp-tags"><span class="exp-tag">ERP</span><span class="exp-tag">Plasturgie</span></div>
+      </div>
+    </div>
 
   </div>
 </section>
 
 <!-- COMPETENCES -->
-
 <section id="competences">
   <div class="section-header">
     <p class="section-id">// MODULE_02 :: SKILLS.DAT</p>
@@ -970,57 +967,53 @@ nav a { padding: 14px 12px; font-size: 10px; }
       </div>
     </div>
 
-```
-<div class="skill-panel">
-  <p class="skill-panel-title">// Technologies IT</p>
-  <div class="skill-row" data-level="75">
-    <div class="skill-info"><span class="skill-name">ERP</span><span class="skill-meta">10A · ★★★</span></div>
-    <div class="skill-bar"><div class="skill-fill"></div></div>
-  </div>
-  <div class="skill-row" data-level="100">
-    <div class="skill-info"><span class="skill-name">E-Commerce</span><span class="skill-meta">4A · EXPERT</span></div>
-    <div class="skill-bar"><div class="skill-fill"></div></div>
-  </div>
-  <div class="skill-row" data-level="100">
-    <div class="skill-info"><span class="skill-name">Marketing Digital</span><span class="skill-meta">6A · EXPERT</span></div>
-    <div class="skill-bar"><div class="skill-fill"></div></div>
-  </div>
-  <div class="skill-row" data-level="50">
-    <div class="skill-info"><span class="skill-name">Business Intelligence</span><span class="skill-meta">2A · ★★</span></div>
-    <div class="skill-bar"><div class="skill-fill"></div></div>
-  </div>
-</div>
+    <div class="skill-panel">
+      <p class="skill-panel-title">// Technologies IT</p>
+      <div class="skill-row" data-level="75">
+        <div class="skill-info"><span class="skill-name">ERP</span><span class="skill-meta">10A · ★★★</span></div>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-row" data-level="100">
+        <div class="skill-info"><span class="skill-name">E-Commerce</span><span class="skill-meta">4A · EXPERT</span></div>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-row" data-level="100">
+        <div class="skill-info"><span class="skill-name">Marketing Digital</span><span class="skill-meta">6A · EXPERT</span></div>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-row" data-level="50">
+        <div class="skill-info"><span class="skill-name">Business Intelligence</span><span class="skill-meta">2A · ★★</span></div>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+      </div>
+    </div>
 
-<div class="skill-panel">
-  <p class="skill-panel-title">// Management</p>
-  <div class="skill-row" data-level="100">
-    <div class="skill-info"><span class="skill-name">Pilotage de projets</span><span class="skill-meta">19A · EXPERT</span></div>
-    <div class="skill-bar"><div class="skill-fill"></div></div>
-  </div>
-  <div class="skill-row" data-level="100">
-    <div class="skill-info"><span class="skill-name">Gestion des risques</span><span class="skill-meta">19A · EXPERT</span></div>
-    <div class="skill-bar"><div class="skill-fill"></div></div>
-  </div>
-  <div class="skill-row" data-level="100">
-    <div class="skill-info"><span class="skill-name">Veille technologique</span><span class="skill-meta">10A · EXPERT</span></div>
-    <div class="skill-bar"><div class="skill-fill"></div></div>
-  </div>
-  <div class="skill-row" data-level="75">
-    <div class="skill-info"><span class="skill-name">Web Marketing</span><span class="skill-meta">7A · ★★★</span></div>
-    <div class="skill-bar"><div class="skill-fill"></div></div>
-  </div>
-  <div class="skill-row" data-level="75">
-    <div class="skill-info"><span class="skill-name">Stratégie commerciale</span><span class="skill-meta">5A · ★★★</span></div>
-    <div class="skill-bar"><div class="skill-fill"></div></div>
-  </div>
-</div>
-```
-
+    <div class="skill-panel">
+      <p class="skill-panel-title">// Management</p>
+      <div class="skill-row" data-level="100">
+        <div class="skill-info"><span class="skill-name">Pilotage de projets</span><span class="skill-meta">19A · EXPERT</span></div>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-row" data-level="100">
+        <div class="skill-info"><span class="skill-name">Gestion des risques</span><span class="skill-meta">19A · EXPERT</span></div>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-row" data-level="100">
+        <div class="skill-info"><span class="skill-name">Veille technologique</span><span class="skill-meta">10A · EXPERT</span></div>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-row" data-level="75">
+        <div class="skill-info"><span class="skill-name">Web Marketing</span><span class="skill-meta">7A · ★★★</span></div>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+      </div>
+      <div class="skill-row" data-level="75">
+        <div class="skill-info"><span class="skill-name">Stratégie commerciale</span><span class="skill-meta">5A · ★★★</span></div>
+        <div class="skill-bar"><div class="skill-fill"></div></div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- SECTEURS -->
-
 <section id="secteurs">
   <div class="section-header">
     <p class="section-id">// MODULE_03 :: SECTORS.MAP</p>
@@ -1044,7 +1037,6 @@ nav a { padding: 14px 12px; font-size: 10px; }
 </section>
 
 <!-- FORMATION -->
-
 <section id="formation">
   <div class="section-header">
     <p class="section-id">// MODULE_04 :: EDUCATION.SYS</p>
@@ -1076,7 +1068,6 @@ nav a { padding: 14px 12px; font-size: 10px; }
 </section>
 
 <!-- FOOTER -->
-
 <footer>
   <div class="footer-name">LIABEUF_STÉPHANE</div>
   <div class="footer-info">
@@ -1124,6 +1115,5 @@ nav a { padding: 14px 12px; font-size: 10px; }
     }, 18);
   }, 400);
 </script>
-
 </body>
 </html>
