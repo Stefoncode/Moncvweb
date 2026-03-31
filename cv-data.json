@@ -47,10 +47,10 @@
           "objectif": "Transformation digitale du pôle Field Seeds — écosystème de tableaux de bord unifiés (Power BI + CRM Dynamics) pour piloter les performances commerciales, marketing et terrain à l'échelle européenne.",
           "description": "Roadmap produit LFS, conception UX/UI (wireframes, maquettes, guidelines), ateliers Design Thinking avec équipes sales / marketing / CRM / data. KPIs par profil utilisateur (Comex, Country Managers, Sales Managers, commerciaux). Gouvernance Scrum : backlog, rituels Sprint, cadencement trimestriel, coaching des équipes Data et CRM.",
           "resultats": [
-            "Doublement du taux de conversion",
-            "CA e-commerce +70% en cumulé annuel (YTD)",
-            "Déploiement dans 200+ pays vs 7 initialement",
-            "Performances techniques et fluidité navigation optimisées"
+            "Evangélisation au mode produit",
+            "Mise en place des rituels Scrum",
+            "Mise en place des KPIs par profil utilisateur",
+            "Mise en place des dashboards"
           ],
           "tags": [
             "Power BI",
