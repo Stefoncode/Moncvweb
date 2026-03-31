@@ -1,0 +1,242 @@
+{
+  "identity": {
+    "prenom": "Stéphane",
+    "nom": "Liabeuf",
+    "titre": "Directeur Conseil Service",
+    "entreprise": "CGI Group",
+    "localisation": "Clermont-Ferrand",
+    "accroche": "UX & Digital Manager // Product Manager // E-Commerce Architect // Data Leader",
+    "description": "Fort de 25 ans d'expérience dans l'édition de logiciels, l'e-commerce et les systèmes d'information, Stéphane accompagne la transformation IT des entreprises en alliant vision stratégique, innovation et excellence opérationnelle.",
+    "disponibilite": "AVAILABLE — CV NOV. 2025",
+    "email": "",
+    "linkedin": "",
+    "site": "www.stephaneliabeuf.fr"
+  },
+
+  "stats": [
+    { "valeur": "25+", "label": "ANS XP" },
+    { "valeur": "40",  "label": "SQUADS" },
+    { "valeur": "39",  "label": "PAYS" },
+    { "valeur": "×2",  "label": "CONV. RATE" },
+    { "valeur": "+70%","label": "CA E-COM" }
+  ],
+
+  "experiences": [
+    {
+      "groupe": "CGI // Directeur Conseil Service",
+      "groupe_style": "primary",
+      "postes": [
+        {
+          "periode": "Mai 2025 → Aujourd'hui",
+          "entreprise": "Limagrain Europe — Field Seeds Division",
+          "role": "Product Manager & UX Designer",
+          "programme": "Plateforme BI & CRM — Pilotage commercial européen",
+          "objectif": "Transformation digitale du pôle Field Seeds — écosystème de tableaux de bord unifiés (Power BI + CRM Dynamics) pour piloter les performances commerciales, marketing et terrain à l'échelle européenne.",
+          "description": "Roadmap produit LFS, conception UX/UI (wireframes, maquettes, guidelines), ateliers Design Thinking avec équipes sales / marketing / CRM / data. KPIs par profil utilisateur (Comex, Country Managers, Sales Managers, commerciaux). Gouvernance Scrum : backlog, rituels Sprint, cadencement trimestriel, coaching des équipes Data et CRM.",
+          "resultats": [],
+          "tags": ["Power BI", "CRM Dynamics", "UX/UI", "Product Manager", "Scrum", "Design Thinking", "KPIs"]
+        },
+        {
+          "periode": "Déc 2024 → Mars 2025",
+          "entreprise": "Picture Organic Clothing (mi-temps)",
+          "role": "UX Designer",
+          "programme": "Projet BI — Power BI — Fabrik",
+          "objectif": "",
+          "description": "Conception de tableaux de bord ergonomiques pour les équipes commerciales, financières et le comité de direction. Guidelines graphiques et ergonomiques. Workshops UX en mode Design Thinking.",
+          "resultats": [],
+          "tags": ["Power BI", "UX Design", "Design Thinking", "Dashboards"]
+        },
+        {
+          "periode": "Avr 2023 → Mars 2025",
+          "entreprise": "Picture Organic Clothing",
+          "role": "Directeur de Projet E-Commerce",
+          "programme": "Refonte site + Internationalisation (7 → 200+ pays)",
+          "objectif": "",
+          "description": "Refonte complète sous Salesforce PWA Kit. Internationalisation de 7 à 200+ pays : multidevise, multilingue, modules taxation/conformité, logistique internationale. Optimisation parcours clients (abandon panier, recherche prédictive, paiement 1 clic).",
+          "resultats": [
+            "Doublement du taux de conversion",
+            "CA e-commerce +70% en cumulé annuel (YTD)",
+            "Déploiement dans 200+ pays vs 7 initialement",
+            "Performances techniques et fluidité navigation optimisées"
+          ],
+          "tags": ["Salesforce PWA", "E-Commerce", "200+ pays", "×2 Conversion:mag", "+70% CA:grn"]
+        },
+        {
+          "periode": "2021 → Aujourd'hui",
+          "entreprise": "CGI // Région AURA",
+          "role": "UX & Digital Manager",
+          "programme": "",
+          "objectif": "",
+          "description": "Développement de l'offre UX/UI sur le marché AURA. Études des besoins clients locaux, adaptation des solutions, renforcement de la notoriété CGI dans la région, création d'opportunités de croissance.",
+          "resultats": [],
+          "tags": ["UX/UI", "Business Dev", "Région AURA"]
+        },
+        {
+          "periode": "2021 → 2023",
+          "entreprise": "Michelin",
+          "role": "UX & Digital Manager",
+          "programme": "",
+          "objectif": "",
+          "description": "Déploiement UX/UI au sein des business units Michelin. Identification des besoins, conception de solutions, KPIs UX pour évaluer la progression et optimiser la satisfaction utilisateurs.",
+          "resultats": [],
+          "tags": ["UX/UI", "KPIs", "Michelin"]
+        },
+        {
+          "periode": "2019 → 2021",
+          "entreprise": "Michelin",
+          "role": "Delivery Manager",
+          "programme": "Programme Engage — Salesforce",
+          "objectif": "",
+          "description": "Intégration des outils Michelin dans Salesforce CRM. Pilotage de ~40 squads sur 3 pays (USA, France, Maroc) en agile distribué.",
+          "resultats": [],
+          "tags": ["Salesforce", "Agile Distribué", "~40 Squads", "3 Pays"]
+        },
+        {
+          "periode": "2017 → 2019",
+          "entreprise": "Michelin",
+          "role": "Directeur Projet BI Europe",
+          "programme": "Programme Engage — Salesforce",
+          "objectif": "",
+          "description": "Outil BI Europe pour 2 000 commerciaux dans 39 pays et 25 langues. Pilotage ventes et commandes jusqu'au SKU, intégré dans Salesforce dans le cadre de la transformation customer-centric Engage.",
+          "resultats": [],
+          "tags": ["Business Intelligence", "2000 Users", "39 Pays", "25 Langues", "Salesforce"]
+        }
+      ]
+    },
+    {
+      "groupe": "Parcours Autre",
+      "groupe_style": "secondary",
+      "postes": [
+        {
+          "periode": "2016 → 2017",
+          "entreprise": "Le Temps des Travaux — Retail",
+          "role": "Directeur Associé E-Commerce & CTO",
+          "programme": "",
+          "objectif": "",
+          "description": "Élaboration du SI, stratégie de marque, refonte complète du site E-Commerce. CA 450 k€ dès la 1ère année. Stratégie webmarketing, hébergement et sécurité serveur dédié.",
+          "resultats": [],
+          "tags": ["CTO", "E-Commerce", "450 k€ CA:grn"]
+        },
+        {
+          "periode": "2013 → 2016",
+          "entreprise": "Trismégiste International — vetality.fr",
+          "role": "Directeur E-Commerce",
+          "programme": "",
+          "objectif": "",
+          "description": "Création du pôle E-Commerce ex-nihilo : marque, recrutement, SI, logistique, webmarketing. CA 900 k€ en 1ère année. Rentabilité atteinte au 15e mois (objectif 24 mois).",
+          "resultats": [
+            "900 k€ CA 1ère année — objectif 1 M€",
+            "Rentabilité au 15e mois — objectif 24 mois"
+          ],
+          "tags": ["Création ex-nihilo", "900 k€:grn", "Retail"]
+        },
+        {
+          "periode": "2010 → 2013",
+          "entreprise": "Indépendant",
+          "role": "Consultant Digital & UX Designer",
+          "programme": "",
+          "objectif": "",
+          "description": "Accompagnement de PME et startups dans leur transformation digitale. Audits UX, wireframes, prototypes interactifs, conseil stratégie digitale, SEO, social media. Dev front-end HTML/CSS/JS. Ateliers Design Thinking.",
+          "resultats": [],
+          "tags": ["Conseil", "UX Design", "Design Thinking", "SEO"]
+        },
+        {
+          "periode": "2005 → 2010",
+          "entreprise": "Sescoi International (Hexagon)",
+          "role": "Product Manager & Dir. Innovation & Industrialisation",
+          "programme": "",
+          "objectif": "",
+          "description": "Gestion du cycle de vie produit ERP, outils planification et CAD viewer. Roadmap, R&D agile, go-to-market. Création cellule industrialisation — CMMI Level 1 → Level 4 en 3 ans (partenariat Mercury). Standardisation des processus dev / tests / déploiement.",
+          "resultats": [],
+          "tags": ["Product Management", "ERP", "CMMI L4", "Innovation"]
+        },
+        {
+          "periode": "2001 → 2005",
+          "entreprise": "Sescoi International (Hexagon)",
+          "role": "Resp. Dev Scheduling & Business Analyste ERP Europe",
+          "programme": "",
+          "objectif": "",
+          "description": "Conception et développement du module scheduling intégré à l'ERP. Analyse processus métier industriels (multi-sites, langues, devises). Formation équipes locales européennes.",
+          "resultats": [],
+          "tags": ["ERP", "Business Analysis", "Europe"]
+        },
+        {
+          "periode": "1999 → 2001",
+          "entreprise": "Moul'Anjou Plastique",
+          "role": "Responsable Projet ERP — Injection Plastique",
+          "programme": "",
+          "objectif": "",
+          "description": "Mise en œuvre ERP en production industrielle. Recueil besoins, cahier des charges, déploiement, formation utilisateurs. Intégration GPAO et systèmes supervision machine.",
+          "resultats": [],
+          "tags": ["ERP", "Plasturgie", "Industrie"]
+        }
+      ]
+    }
+  ],
+
+  "competences": [
+    {
+      "categorie": "Techniques",
+      "items": [
+        { "nom": "Gestion de projet",    "annees": "25A", "niveau": 100, "label": "EXPERT" },
+        { "nom": "Méthodologies Agiles", "annees": "22A", "niveau": 75,  "label": "★★★" },
+        { "nom": "UX / UI",              "annees": "15A", "niveau": 75,  "label": "★★★" },
+        { "nom": "Design Thinking",      "annees": "15A", "niveau": 75,  "label": "★★★" },
+        { "nom": "CMS E-Commerce",       "annees": "6A",  "niveau": 100, "label": "EXPERT" },
+        { "nom": "Scheduling",           "annees": "5A",  "niveau": 100, "label": "EXPERT" },
+        { "nom": "Dev HTML/CSS/PHP/JS",  "annees": "8A",  "niveau": 50,  "label": "★★" }
+      ]
+    },
+    {
+      "categorie": "Technologies IT",
+      "items": [
+        { "nom": "E-Commerce",              "annees": "6A",  "niveau": 100, "label": "EXPERT" },
+        { "nom": "Marketing Digital",       "annees": "6A",  "niveau": 100, "label": "EXPERT" },
+        { "nom": "ERP",                     "annees": "10A", "niveau": 75,  "label": "★★★" },
+        { "nom": "CRM (Salesforce/Dynamics)","annees": "",   "niveau": 75,  "label": "★★★" },
+        { "nom": "Business Intelligence",   "annees": "",    "niveau": 50,  "label": "Power BI · ★★" },
+        { "nom": "Data & Analytics",        "annees": "",    "niveau": 75,  "label": "GA4 · Microstrategy" },
+        { "nom": "Outils IA",               "annees": "",    "niveau": 75,  "label": "Analyse · Génération" }
+      ]
+    },
+    {
+      "categorie": "Management",
+      "items": [
+        { "nom": "Pilotage de projets",     "annees": "25A", "niveau": 100, "label": "EXPERT" },
+        { "nom": "Gestion des risques",     "annees": "25A", "niveau": 100, "label": "EXPERT" },
+        { "nom": "Veille technologique",    "annees": "10A", "niveau": 100, "label": "EXPERT" },
+        { "nom": "Web Marketing",           "annees": "7A",  "niveau": 75,  "label": "★★★" },
+        { "nom": "Stratégie commerciale",   "annees": "6A",  "niveau": 75,  "label": "★★★" },
+        { "nom": "Stratégie des marques",   "annees": "6A",  "niveau": 75,  "label": "★★★" }
+      ]
+    }
+  ],
+
+  "secteurs": [
+    "User Experience", "Marketing Digital", "Innovation Logicielle", "E-Commerce",
+    "Retail", "Automobile", "Manufacturing", "Plasturgie",
+    "Éditeur ERP", "Qualité Logicielle", "Data & BI", "Design Thinking",
+    "Agile & Scrum", "PMI", "CRM", "Product Management"
+  ],
+
+  "formation": [
+    {
+      "annee": "1999",
+      "diplome": "Diplôme d'Ingénieur",
+      "etablissement": "ENISE — Saint-Étienne",
+      "details": "Groupe Centrale Lyon · Spécialisation Design Industriel · Biennale du Design de Saint-Étienne"
+    },
+    {
+      "annee": "1994",
+      "diplome": "BAC E",
+      "etablissement": "Clermont-Ferrand",
+      "details": ""
+    }
+  ],
+
+  "certifications": [
+    "CMMI", "PMI (2005)", "HP Quality Center", "HP Functional Testing & BPT",
+    "MS Project", "JIRA · Confluence", "Prestashop · Magento · Salesforce",
+    "Power BI · Microstrategy", "GA4", "Scrum · Kanban · XP", "Outils IA"
+  ]
+}
