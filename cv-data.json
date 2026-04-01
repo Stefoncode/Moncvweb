@@ -8,9 +8,22 @@
     "accroche": "UX & Digital Manager // Product Manager // E-Commerce Architect // Data Leader",
     "description": "Fort de 25 ans d'expérience dans l'édition de logiciels, l'e-commerce et les systèmes d'information, Stéphane accompagne la transformation IT des entreprises en alliant vision stratégique, innovation et excellence opérationnelle.",
     "disponibilite": "AVAILABLE — CV NOV. 2025",
-    "email": "",
-    "linkedin": "",
-    "site": "www.stephaneliabeuf.fr"
+    "contact": {
+      "email": "",
+      "telephone": "",
+      "linkedin": "",
+      "linkedin_label": "linkedin.com/in/stephaneliabeuf",
+      "github": "",
+      "site": "https://www.stephaneliabeuf.fr"
+    },
+    "seo": {
+      "title": "Stéphane Liabeuf — Directeur Conseil UX & Digital | CGI Clermont-Ferrand",
+      "description": "CV de Stéphane Liabeuf, Directeur Conseil et UX & Digital Manager chez CGI. 25 ans d'expérience en transformation digitale, e-commerce, product management et UX/UI.",
+      "keywords": "Stéphane Liabeuf, UX Designer, Digital Manager, Product Manager, E-Commerce, CGI, Clermont-Ferrand, Salesforce, Scrum, Power BI",
+      "og_image": "https://www.stephaneliabeuf.fr/og-image.png",
+      "canonical": "https://www.stephaneliabeuf.fr",
+      "twitter_handle": ""
+    }
   },
   "stats": [
     {
@@ -46,12 +59,7 @@
           "programme": "Plateforme BI & CRM — Pilotage commercial européen",
           "objectif": "Transformation digitale du pôle Field Seeds — écosystème de tableaux de bord unifiés (Power BI + CRM Dynamics) pour piloter les performances commerciales, marketing et terrain à l'échelle européenne.",
           "description": "Roadmap produit LFS, conception UX/UI (wireframes, maquettes, guidelines), ateliers Design Thinking avec équipes sales / marketing / CRM / data. KPIs par profil utilisateur (Comex, Country Managers, Sales Managers, commerciaux). Gouvernance Scrum : backlog, rituels Sprint, cadencement trimestriel, coaching des équipes Data et CRM.",
-          "resultats": [
-            "Evangélisation au mode produit",
-            "Mise en place des rituels Scrum",
-            "Mise en place des KPIs par profil utilisateur",
-            "Mise en place des dashboards"
-          ],
+          "resultats": [],
           "tags": [
             "Power BI",
             "CRM Dynamics",
