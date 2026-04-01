@@ -28,27 +28,27 @@
   "stats": [
     {
       "valeur": "25+",
-      "label": "ANS XP"
+      "label": "années XP"
     },
     {
       "valeur": "40",
-      "label": "SQUADS"
-    },
-    {
-      "valeur": "39",
-      "label": "PAYS"
+      "label": "SQUADS synchronisées"
     },
     {
       "valeur": "×2",
-      "label": "CONV. RATE"
+      "label": "Taux de conversion Ecom"
     },
     {
       "valeur": "+70%",
-      "label": "CA E-COM"
+      "label": "CA Ecom n -> n+1"
     },
     {
-      "valeur": "UX & Digital",
-      "label": "Manager"
+      "valeur": "9,1%",
+      "label": "Taux de conversion Ecom sur 1 an"
+    },
+    {
+      "valeur": "980 k€",
+      "label": "CA 1ère année Ecom"
     }
   ],
   "experiences": [
